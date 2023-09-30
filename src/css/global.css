@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+  border-color: unset;
+  box-shadow: unset;
+}
+
+.rc-slider-handle:focus-visible {
+  border-color: #2db7f5;
+  box-shadow: unset;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: 0;
+  scrollbar-color: red red;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: red;
+  border-radius: 0;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 0;
+  border: 0 solid red;
+}
