@@ -4,7 +4,7 @@ import "@/css/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="h-screen py-16">
+    <div className="h-screen py-8">
       <Component {...pageProps} />
     </div>
   );
