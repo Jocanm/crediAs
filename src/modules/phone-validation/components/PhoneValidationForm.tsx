@@ -2,15 +2,21 @@ import { Button } from "@/components/ui/button/Button";
 import { Form } from "@/components/ui/form/Form";
 import { Input } from "@/components/ui/input/Input";
 import { usePhoneValidationForm } from "../hooks/usePhoneValidationForm";
+import { type PhoneValidationFormData } from "../schemas/yupSchemas";
 import { PhoneValidationButton } from "./PhoneValidationButton";
 
-export const PhoneValidationForm = () => {
+interface Props {
+  onSubmit: (data: PhoneValidationFormData) => void;
+}
+
+export const PhoneValidationForm: React.FC<Props> = ({ onSubmit }) => {
   const { methods, disableButton, onKeyDown, onButtonPressed } =
     usePhoneValidationForm();
 
   return (
     <Form
       methods={methods}
+      onSubmit={methods.handleSubmit(onSubmit)}
       className="flex flex-col items-center gap-10 px-10 mt-2"
     >
       <div className="grid grid-cols-4 gap-10 [&_input]:text-center [&_input]:text-xl">

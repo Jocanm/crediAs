@@ -3,8 +3,11 @@ import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { PhoneValidationForm } from "@/modules/phone-validation/components/PhoneValidationForm";
 
 const PhoneValidationPage = () => {
+  // const router = useRouter();
+  const onSubmitForm = () => {};
+
   return (
-    <div className="flex flex-col gap-4">
+    <div className="relative flex flex-col gap-4">
       <Typography size="big" className="flex flex-col text-center">
         <span>Queremos asegurarnos</span>
         <span>que seas tú</span>
@@ -13,7 +16,8 @@ const PhoneValidationPage = () => {
         Para continuar con la solicitud, verificaremos tu teléfono con el código
         que te enviamos por <span className="font-bold">SMS</span>
       </Typography>
-      <PhoneValidationForm />
+      <PhoneValidationForm onSubmit={onSubmitForm} />
+      <img src="/6.png" className="w-[100px] absolute -right-10 top-56" />
     </div>
   );
 };

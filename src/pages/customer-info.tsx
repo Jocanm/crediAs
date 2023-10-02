@@ -33,8 +33,12 @@ const CustomerInfoPage = () => {
       </Typography>
       <CustomerInfoForm onSubmit={onSubmit} />
       <div className="flex items-center gap-4 mt-4">
-        <Checkbox ref={checkboxEl} />
-        <Typography className="text-xs font-bold">
+        <Checkbox ref={checkboxEl} id="accept-terms" />
+        <Typography
+          as="label"
+          htmlFor="accept-terms"
+          className="text-xs font-bold cursor-pointer"
+        >
           Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo con
           las clausulas propuestas
         </Typography>
