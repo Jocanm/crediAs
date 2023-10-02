@@ -23,9 +23,12 @@ const CustomerInfoPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5">
+      <Typography size="big" className="text-center">
+        ¡Queremos conocerte!
+      </Typography>
       <CustomerInfoForm onSubmit={onSubmit} />
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-4">
         <Checkbox ref={checkboxEl} />
         <Typography className="text-xs font-bold">
           Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo con
