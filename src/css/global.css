@@ -34,4 +34,5 @@ input, select {
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  background-color: #f6f6f6;
 }
