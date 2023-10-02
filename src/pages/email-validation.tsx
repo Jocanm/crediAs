@@ -1,8 +1,16 @@
 import { Button } from "@/components/ui/button/Button";
 import Typography from "@/components/ui/typography/Typography";
+import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
+import { useRouter } from "next/router";
 
 const EmailValidationPage = () => {
+  const router = useRouter();
+
+  const onValidateEmail = () => {
+    void router.push(RouteName.PHONE_VALIDATION);
+  };
+
   return (
     <div className="flex flex-col items-center justify-between h-full">
       <Typography size="big" className="text-center">
@@ -27,7 +35,9 @@ const EmailValidationPage = () => {
           </Typography>
         </div>
       </div>
-      <Button className="px-10 w-fit">Siguiente</Button>
+      <Button className="px-10 w-fit" onClick={onValidateEmail}>
+        Siguiente
+      </Button>
     </div>
   );
 };
