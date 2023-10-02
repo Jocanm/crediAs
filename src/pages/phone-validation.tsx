@@ -1,11 +1,14 @@
 import Typography from "@/components/ui/typography/Typography";
+import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { PhoneValidationForm } from "@/modules/phone-validation/components/PhoneValidationForm";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const PhoneValidationPage = () => {
-  // const router = useRouter();
-  const onSubmitForm = () => {};
+  const router = useRouter();
+  const onSubmitForm = () => {
+    void router.push(RouteName.FACIAL_RECOGNITION);
+  };
 
   return (
     <div className="relative flex flex-col gap-4">

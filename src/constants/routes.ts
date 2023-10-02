@@ -3,4 +3,5 @@ export enum RouteName {
   CUSTOMER_INFO = "/customer-info",
   EMAIL_VALIDATION = "/email-validation",
   PHONE_VALIDATION = "/phone-validation",
+  FACIAL_RECOGNITION = "/facial-recognition",
 }
