@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.layout ?? ((page) => page);
 
   return (
-    <div className="h-screen py-8">
+    <div className="h-screen sm:py-8">
       <ToastContainer />
       {getLayout(<Component {...pageProps} />)}
     </div>
