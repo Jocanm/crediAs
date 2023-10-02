@@ -1,5 +1,5 @@
+import Typography from "@/components/ui/typography/Typography";
 import React from "react";
-import Typography from "../ui/typography/Typography";
 
 export const LoanDetails = () => {
   return (

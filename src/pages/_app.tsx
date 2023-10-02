@@ -1,11 +1,22 @@
+import { type NextPage } from "next";
 import type { AppProps } from "next/app";
 import "rc-slider/assets/index.css";
 import "@/css/global.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout = NextPage & {
+  layout?: (page: React.ReactElement) => React.ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.layout ?? ((page) => page);
+
   return (
     <div className="h-screen py-8">
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </div>
   );
 }

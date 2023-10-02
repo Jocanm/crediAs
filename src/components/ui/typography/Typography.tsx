@@ -7,6 +7,7 @@ interface TypographyProps {
   size?: "base" | "big" | "medium";
   color?: "base" | "light";
   as?: keyof JSX.IntrinsicElements;
+  [key: string]: any;
 }
 
 const Typography: FC<TypographyProps> = ({
@@ -15,6 +16,7 @@ const Typography: FC<TypographyProps> = ({
   color = "base",
   size = "base",
   className,
+  ...rest
 }) => {
   const Element = as ?? "p";
 
@@ -28,7 +30,11 @@ const Typography: FC<TypographyProps> = ({
     className,
   );
 
-  return <Element className={baseClassName}>{children}</Element>;
+  return (
+    <Element className={baseClassName} {...rest}>
+      {children}
+    </Element>
+  );
 };
 
 export default Typography;

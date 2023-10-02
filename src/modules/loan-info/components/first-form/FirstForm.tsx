@@ -3,9 +3,11 @@ import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
 import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import Slider from "rc-slider";
 import React, { useMemo, useState } from "react";
-import { Button } from "../ui/button/Button";
-import Typography from "../ui/typography/Typography";
+import { Button } from "../../../../components/ui/button/Button";
+import Typography from "../../../../components/ui/typography/Typography";
 import { add } from "date-fns";
+import { useRouter } from "next/router";
+import { RouteName } from "@/constants/routes";
 
 interface Props {
   onShowDetails: () => void;
@@ -14,6 +16,8 @@ interface Props {
 export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   const minValue = 100_000;
   const maxValue = 1_000_000;
+
+  const router = useRouter();
   const [amount, setAmount] = useState<number>(minValue);
   const [daySelected, setDaySelected] = useState<15 | 29>();
   const [feesSelected, setFeesSelected] = useState<number>();
@@ -31,6 +35,10 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
 
     return Array.from({ length: maxFees }, (_, i) => i + 1);
   }, [amount]);
+
+  const onNextStep = () => {
+    void router.push(RouteName.CUSTOMER_INFO);
+  };
 
   return (
     <>
@@ -63,7 +71,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
         </Typography>
         <div className="flex items-center w-full mt-4 mb-5">
           {availableFees.map((el, i) => (
-            <>
+            <React.Fragment key={el}>
               <div
                 onClick={() => setFeesSelected(el)}
                 className="box-content relative flex items-center justify-center h-4 px-1 bg-white rounded-full shadow cursor-pointer max-w-4"
@@ -79,7 +87,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
               {i !== availableFees.length - 1 && (
                 <section className="w-full border-t border-[#d23062] shadow-sm" />
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
@@ -197,7 +205,9 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
           </div>
         </div>
       </div>
-      <Button className="mx-auto mt-8 w-36">Siguiente</Button>
+      <Button className="mx-auto mt-8 w-36" onClick={onNextStep}>
+        Siguiente
+      </Button>
     </>
   );
 };

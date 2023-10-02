@@ -3,7 +3,7 @@ import { es } from "date-fns/locale";
 
 export const withDateFormat = (
   date?: string | number | Date,
-  format = "yyyy-mm-dd",
+  format = "yyyy-MM-dd",
 ) => {
   const myDate = date !== undefined ? new Date(date) : new Date();
 
