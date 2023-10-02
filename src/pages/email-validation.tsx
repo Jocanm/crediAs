@@ -21,7 +21,7 @@ const EmailValidationPage = () => {
           Para continuar con la solicitud verificaremos tu correo electrónico
         </Typography>
         <i className="text-8xl fa-regular fa-envelope text-primary"></i>
-        <img src="/5.png" className="w-[120px]" />
+        <img src="/5.webp" className="w-[120px]" />
         <div>
           <Typography className="text-center">
             Para solicitar otra vez, haz clic{" "}

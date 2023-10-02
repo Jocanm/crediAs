@@ -21,7 +21,7 @@ const PhoneValidationPage = () => {
         que te enviamos por <span className="font-bold">SMS</span>
       </Typography>
       <PhoneValidationForm onSubmit={onSubmitForm} />
-      <img src="/6.png" className="w-[100px] absolute -right-10 top-56" />
+      <img src="/6.webp" className="w-[100px] absolute -right-10 top-56" />
     </div>
   );
 };

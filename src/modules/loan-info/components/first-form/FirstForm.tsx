@@ -136,13 +136,8 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
         <Typography size="medium" className="text-center">
           Según tu puntaje, pagarás
         </Typography>
-        <div className="relative flex mt-4">
-          <img
-            src="/empecemos.png"
-            height={180}
-            width={500}
-            className="absolute right-32 top-[23px]"
-          />
+        <div className="relative flex items-end mt-4">
+          <img src="/2.webp" className="w-24 h-40" />
           <div className="flex items-end justify-end flex-1 w-full right-48">
             <div
               className="h-[70px] w-16 rounded-t-lg flex flex-col items-center py-2 justify-between relative

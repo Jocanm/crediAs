@@ -15,7 +15,6 @@
 /* Firefox */
 * {
   scrollbar-width: 0;
-  scrollbar-color: red red;
 }
 
 /* Chrome, Edge, and Safari */
@@ -24,14 +23,11 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: red;
   border-radius: 0;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: red;
   border-radius: 0;
-  border: 0 solid red;
 }
 
 input, select {

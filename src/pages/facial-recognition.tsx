@@ -20,7 +20,7 @@ export const FacialRecognitionPage = () => {
       <Typography size="medium" className="flex flex-col text-center">
         <span>En la foto se debe ver</span> <span>claramente tu rostro</span>
       </Typography>
-      <img src="/3.png" className="w-[100px]" />
+      <img src="/3.webp" className="w-[100px]" />
       <Button className="px-10 w-fit">Enviar</Button>
       <input
         type="file"
