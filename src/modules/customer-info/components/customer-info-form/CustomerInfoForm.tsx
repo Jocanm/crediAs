@@ -32,15 +32,15 @@ export const CustomerInfoForm = () => {
         </Select>
         <Input name="documentNumber" label="No:" />
         <Input
+          type="date"
           name="birthDate"
           label="Fecha de nacimiento:"
-          type="date"
           max={withDateFormat(new Date())}
         />
         <Input
+          type="date"
           name="expirationDate"
           label="Fecha de expedición:"
-          type="date"
           max={withDateFormat(new Date())}
         />
       </div>
