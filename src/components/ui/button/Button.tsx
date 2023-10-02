@@ -5,7 +5,7 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: React.FC<Props> = (props) => {
   const baseClassName = cn(
-    "bg-[#d70b52] text-white rounded-2xl p-4",
+    "bg-primary text-white rounded-2xl p-4",
     props.className,
   );
 
