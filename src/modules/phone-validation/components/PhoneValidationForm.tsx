@@ -19,11 +19,23 @@ export const PhoneValidationForm: React.FC<Props> = ({ onSubmit }) => {
       onSubmit={methods.handleSubmit(onSubmit)}
       className="flex flex-col items-center gap-10 px-10 mt-2"
     >
-      <div className="grid grid-cols-4 gap-10 [&_input]:text-center [&_input]:text-xl">
-        <Input name="code_1" />
-        <Input name="code_2" onKeyDown={onKeyDown(2)} />
-        <Input name="code_3" onKeyDown={onKeyDown(3)} />
-        <Input name="code_4" onKeyDown={onKeyDown(4)} />
+      <div className="grid grid-cols-4 gap-4 sm:gap-10 [&_input]:text-center [&_input]:text-xl">
+        <Input name="code_1" containerClassName="w-11" />
+        <Input
+          name="code_2"
+          onKeyDown={onKeyDown(2)}
+          containerClassName="w-11"
+        />
+        <Input
+          name="code_3"
+          onKeyDown={onKeyDown(3)}
+          containerClassName="w-11"
+        />
+        <Input
+          name="code_4"
+          onKeyDown={onKeyDown(4)}
+          containerClassName="w-11"
+        />
       </div>
       <div className="grid grid-cols-3 gap-y-5 gap-x-7">
         {Array.from({ length: 9 }).map((_, i) => (

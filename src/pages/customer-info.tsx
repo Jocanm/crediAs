@@ -27,7 +27,10 @@ const CustomerInfoPage = () => {
 
   return (
     <div className="relative flex flex-col gap-5">
-      <img src="/4.webp" className="w-[100px] absolute -left-11 -top-10" />
+      <img
+        src="/4.webp"
+        className="w-[100px] absolute -left-7 sm:-left-11 -top-20 sm:-top-10"
+      />
       <Typography size="big" className="text-center">
         ¡Queremos conocerte!
       </Typography>

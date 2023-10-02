@@ -12,7 +12,7 @@ const EmailValidationPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between h-full">
+    <div className="flex flex-col items-center h-full gap-8 sm:justify-between sm:gap-0">
       <Typography size="big" className="text-center">
         Validación de correo
       </Typography>
