@@ -34,11 +34,13 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
         <Input
           type="date"
           name="birthDate"
+          className="w-full"
           label="Fecha de nacimiento:"
           max={withDateFormat(new Date())}
         />
         <Input
           type="date"
+          className="w-full"
           name="expirationDate"
           label="Fecha de expedición:"
           max={withDateFormat(new Date())}
