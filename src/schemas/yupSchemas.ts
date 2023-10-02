@@ -18,3 +18,8 @@ export const dateRequired = yup
   .date()
   .typeError(requiredMessage)
   .required(requiredMessage);
+
+export const booleanRequired = yup
+  .boolean()
+  .required(requiredMessage)
+  .typeError(requiredMessage);

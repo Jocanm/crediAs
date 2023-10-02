@@ -10,12 +10,12 @@ import {
   type CustomerFormData,
 } from "../../schemas/yupSchemas";
 
-export const CustomerInfoForm = () => {
-  const methods = useForm({ resolver: yupResolver(customerFormSchema) });
+interface Props {
+  onSubmit: (data: CustomerFormData) => void;
+}
 
-  const onSubmit = (data: CustomerFormData) => {
-    console.log(data);
-  };
+export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
+  const methods = useForm({ resolver: yupResolver(customerFormSchema) });
 
   return (
     <Form
@@ -23,7 +23,7 @@ export const CustomerInfoForm = () => {
       onSubmit={methods.handleSubmit(onSubmit)}
       className="flex flex-col items-center gap-10"
     >
-      <div className="grid w-full grid-cols-2 gap-x-8 gap-y-5">
+      <div className="flex flex-col w-full sm:grid sm:grid-cols-2 gap-x-8 gap-y-5">
         <Input name="customerNames" label="Nombres:" />
         <Input name="customerLastNames" label="Apellidos:" />
         <Select name="documentType" label="Tipo de cédula">
@@ -42,6 +42,22 @@ export const CustomerInfoForm = () => {
           name="expirationDate"
           label="Fecha de expedición:"
           max={withDateFormat(new Date())}
+        />
+        <Input
+          phoneFormat
+          name="phoneNumber"
+          label="Teléfono celular:"
+          containerClassName="col-span-2"
+        />
+        <Input
+          name="customerEmail"
+          label="Correo electrónico:"
+          containerClassName="col-span-2"
+        />
+        <Input
+          name="confirmCustomerEmail"
+          label="Confirmar Correo electrónico:"
+          containerClassName="col-span-2"
         />
       </div>
       <Button className="px-10 w-fit">Siguiente</Button>

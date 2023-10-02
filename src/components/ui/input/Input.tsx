@@ -1,21 +1,41 @@
 import cn from "@/utils/cn/cn";
-import { ErrorMessage } from "@hookform/error-message";
-import { useFormContext, useFormState } from "react-hook-form";
-import Typography from "../typography/Typography";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { ErrorMessage } from "@hookform/error-message";
+import { Controller, useFormContext, useFormState } from "react-hook-form";
+import MaskedInput from "react-text-mask";
+import Typography from "../typography/Typography";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
+  phoneFormat?: boolean;
   labelClassName?: string;
   containerClassName?: string;
   helperTextClassName?: string;
 }
 
+const mask = [
+  "(",
+  /[1-9]/,
+  /\d/,
+  /\d/,
+  ")",
+  " ",
+  /\d/,
+  /\d/,
+  /\d/,
+  "-",
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+];
+
 export const Input: React.FC<Props> = ({
   name,
   label,
   className,
+  phoneFormat,
   labelClassName,
   containerClassName,
   helperTextClassName,
@@ -31,7 +51,7 @@ export const Input: React.FC<Props> = ({
   );
 
   return (
-    <div className={cn("flex flex-col", containerClassName)} ref={parent}>
+    <div className={cn("flex flex-col", containerClassName)}>
       {label && (
         <Typography
           as="label"
@@ -42,16 +62,46 @@ export const Input: React.FC<Props> = ({
           {label}
         </Typography>
       )}
-      <input {...register(name)} {...rest} className={inputClassName} />
-      <ErrorMessage
-        name={name}
-        errors={errors}
-        render={({ message }) => (
-          <p className={cn("text-[#f44336] text-xs", helperTextClassName)}>
-            {message}
-          </p>
-        )}
-      />
+      {phoneFormat ? (
+        <Controller
+          name={name}
+          render={({
+            field: { name, onBlur, onChange, ref, value, disabled },
+          }) => (
+            <MaskedInput
+              id={name}
+              ref={ref}
+              mask={mask}
+              name={name}
+              value={value}
+              onBlur={onBlur}
+              onChange={onChange}
+              disabled={disabled}
+              placeholderChar={"\u2000"}
+              className={inputClassName}
+              {...rest}
+            />
+          )}
+        />
+      ) : (
+        <input
+          {...register(name)}
+          {...rest}
+          className={inputClassName}
+          id={name}
+        />
+      )}
+      <div ref={parent}>
+        <ErrorMessage
+          name={name}
+          errors={errors}
+          render={({ message }) => (
+            <p className={cn("text-[#f44336] text-xs", helperTextClassName)}>
+              {message}
+            </p>
+          )}
+        />
+      </div>
     </div>
   );
 };

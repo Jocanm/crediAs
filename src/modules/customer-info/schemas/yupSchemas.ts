@@ -1,5 +1,6 @@
 import {
   dateRequired,
+  emailRequired,
   numberRequired,
   stringRequired,
 } from "@/schemas/yupSchemas";
@@ -12,6 +13,12 @@ export const customerFormSchema = yup.object({
   customerLastNames: stringRequired,
   expirationDate: dateRequired,
   birthDate: dateRequired,
+  phoneNumber: stringRequired,
+  customerEmail: emailRequired,
+  confirmCustomerEmail: stringRequired.oneOf(
+    [yup.ref("customerEmail")],
+    "Los correos no coinciden",
+  ),
 });
 export type CustomerFormData = yup.InferType<typeof customerFormSchema>;
 /**
