@@ -15,7 +15,7 @@ export const customerFormSchema = yup.object({
   birthDate: dateRequired,
   phoneNumber: stringRequired,
   customerEmail: emailRequired,
-  confirmCustomerEmail: stringRequired.oneOf(
+  confirmCustomerEmail: emailRequired.oneOf(
     [yup.ref("customerEmail")],
     "Los correos no coinciden",
   ),
