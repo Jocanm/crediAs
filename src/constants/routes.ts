@@ -6,4 +6,5 @@ export enum RouteName {
   FACIAL_RECOGNITION = "/facial-recognition",
   CONGRATS = "/congrats",
   OUTLAY = "/outlay",
+  OUTLAY_RESULT = "/outlay-result",
 }

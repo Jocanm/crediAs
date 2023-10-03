@@ -1,10 +1,17 @@
+import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { OutlayForm } from "@/modules/outlay/components/OutlayForm";
+import { useRouter } from "next/router";
 
 const OutlayPage = () => {
+  const router = useRouter();
+  const onSendForm = () => {
+    void router.push(RouteName.OUTLAY_RESULT);
+  };
+
   return (
     <div className="flex flex-col items-center h-full gap-4">
-      <OutlayForm onSubmit={() => {}} />
+      <OutlayForm onSubmit={onSendForm} />
     </div>
   );
 };
