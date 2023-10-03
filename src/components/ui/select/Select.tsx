@@ -33,13 +33,16 @@ export const Select: React.FC<Props> = ({
   );
 
   return (
-    <div className={cn("flex flex-col", containerClassName)} ref={parent}>
+    <div
+      className={cn("flex flex-col container", containerClassName)}
+      ref={parent}
+    >
       {label && (
         <Typography
           as="label"
           size="medium"
           htmlFor={name}
-          className={cn(labelClassName)}
+          className={cn("label", labelClassName)}
         >
           {label}
         </Typography>
@@ -57,7 +60,12 @@ export const Select: React.FC<Props> = ({
         name={name}
         errors={errors}
         render={({ message }) => (
-          <p className={cn("text-[#f44336] text-xs", helperTextClassName)}>
+          <p
+            className={cn(
+              "text-[#f44336] text-xs error-message",
+              helperTextClassName,
+            )}
+          >
             {message}
           </p>
         )}

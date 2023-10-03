@@ -5,4 +5,5 @@ export enum RouteName {
   PHONE_VALIDATION = "/phone-validation",
   FACIAL_RECOGNITION = "/facial-recognition",
   CONGRATS = "/congrats",
+  OUTLAY = "/outlay",
 }

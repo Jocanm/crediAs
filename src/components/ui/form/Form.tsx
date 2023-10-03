@@ -6,6 +6,7 @@ interface Props {
   onSubmit?: (data: any) => void;
   children?: React.ReactNode;
   as?: keyof JSX.IntrinsicElements;
+  className?: string;
   [key: string]: any;
 }
 

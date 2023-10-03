@@ -62,7 +62,7 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
           containerClassName="col-span-2"
         />
       </div>
-      <Button className="px-10 w-fit">Siguiente</Button>
+      <Button>Siguiente</Button>
     </Form>
   );
 };

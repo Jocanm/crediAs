@@ -1,8 +1,16 @@
 import Typography from "@/components/ui/typography/Typography";
+import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { PhoneValidationForm } from "@/modules/phone-validation/components/PhoneValidationForm";
+import { useRouter } from "next/router";
 
 const CongratsPage = () => {
+  const router = useRouter();
+
+  const onSentCode = () => {
+    void router.push(RouteName.OUTLAY);
+  };
+
   return (
     <div className="flex flex-col items-center gap-4 mt-2">
       <Typography className="flex flex-col items-center text-3xl font-bold text-primary">
@@ -19,7 +27,7 @@ const CongratsPage = () => {
         Para continuar con el proceso, le enviamos a su numero telefónico un
         código de verificación. Inserte el código aquí:
       </Typography>
-      <PhoneValidationForm onSubmit={() => {}} showKeyboard={false}>
+      <PhoneValidationForm onSubmit={onSentCode} showKeyboard={false}>
         <Typography>
           Para visualizar su pagaré haz clic{" "}
           <span className="font-bold underline cursor-pointer text-primary">
