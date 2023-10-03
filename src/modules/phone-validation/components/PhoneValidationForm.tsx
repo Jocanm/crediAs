@@ -4,12 +4,21 @@ import { Input } from "@/components/ui/input/Input";
 import { usePhoneValidationForm } from "../hooks/usePhoneValidationForm";
 import { type PhoneValidationFormData } from "../schemas/yupSchemas";
 import { PhoneValidationButton } from "./PhoneValidationButton";
+import If from "@/components/ui/if/If";
 
 interface Props {
+  showKeyboard?: boolean;
+  children?: React.ReactNode;
+  showSubmitButton?: boolean;
   onSubmit: (data: PhoneValidationFormData) => void;
 }
 
-export const PhoneValidationForm: React.FC<Props> = ({ onSubmit }) => {
+export const PhoneValidationForm: React.FC<Props> = ({
+  onSubmit,
+  children,
+  showKeyboard = true,
+  showSubmitButton = true,
+}) => {
   const { methods, disableButton, onKeyDown, onButtonPressed } =
     usePhoneValidationForm();
 
@@ -37,19 +46,24 @@ export const PhoneValidationForm: React.FC<Props> = ({ onSubmit }) => {
           containerClassName="w-11"
         />
       </div>
-      <div className="grid grid-cols-3 gap-y-5 gap-x-7">
-        {Array.from({ length: 9 }).map((_, i) => (
-          <PhoneValidationButton
-            key={i}
-            onClick={() => onButtonPressed(String(i + 1))}
-          >
-            {i + 1}
-          </PhoneValidationButton>
-        ))}
-      </div>
-      <Button className="px-10 w-fit" disabled={disableButton}>
-        Enviar
-      </Button>
+      <If showIf={showKeyboard}>
+        <div className="grid grid-cols-3 gap-y-5 gap-x-7">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <PhoneValidationButton
+              key={i}
+              onClick={() => onButtonPressed(String(i + 1))}
+            >
+              {i + 1}
+            </PhoneValidationButton>
+          ))}
+        </div>
+      </If>
+      {children}
+      <If showIf={showSubmitButton}>
+        <Button className="px-10 w-fit" disabled={disableButton}>
+          Enviar
+        </Button>
+      </If>
     </Form>
   );
 };
