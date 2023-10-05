@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input/Input";
 import { Select } from "@/components/ui/select/Select";
 import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { subYears } from "date-fns";
 import { useForm } from "react-hook-form";
 import {
   customerFormSchema,
@@ -16,6 +17,10 @@ interface Props {
 
 export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
   const methods = useForm({ resolver: yupResolver(customerFormSchema) });
+  const actualDate = new Date();
+
+  const maxDate = subYears(actualDate, 18);
+  const minDate = subYears(actualDate, 80);
 
   return (
     <Form
@@ -26,24 +31,24 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
       <div className="flex flex-col w-full sm:grid sm:grid-cols-2 gap-x-8 gap-y-5">
         <Input name="customerNames" label="Nombres:" />
         <Input name="customerLastNames" label="Apellidos:" />
-        <Select name="documentType" label="Tipo de cédula">
+        <Select name="documentType" label="Tipo de cédula:">
           <option>Ciudadanía</option>
           <option>Extranjería</option>
         </Select>
-        <Input name="documentNumber" label="No:" />
+        <Input name="documentNumber" label="Número de cédula:" />
         <Input
           type="date"
           name="birthDate"
           className="w-full"
           label="Fecha de nacimiento:"
-          max={withDateFormat(new Date())}
+          min={withDateFormat(minDate)}
+          max={withDateFormat(maxDate)}
         />
         <Input
           type="date"
           className="w-full"
           name="expirationDate"
           label="Fecha de expedición:"
-          max={withDateFormat(new Date())}
         />
         <Input
           phoneFormat

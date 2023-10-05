@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
+  const stepValue = 10_000;
   const minValue = 100_000;
   const maxValue = 1_000_000;
 
@@ -42,14 +43,15 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
 
   return (
     <>
-      <Typography size="big" className="flex flex-col text-center">
-        ¿Cuánto dinero necesitas? <span>{withMonetFormat(amount)}</span>
+      <Typography className="flex flex-col text-center text-[23px]">
+        ¿Cuánto dinero te gustaría obtener?{" "}
+        <span>{withMonetFormat(amount)}</span>
       </Typography>
       <div className="bg-[#e3e3e3] h-12 flex items-center p-5 pt-4 rounded-lg w-full sh">
         <Slider
           min={minValue}
           max={maxValue}
-          step={100000}
+          step={stepValue}
           onChange={(val) => {
             setAmount(val as number);
           }}

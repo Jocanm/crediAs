@@ -14,10 +14,14 @@ export const OutlayResult: React.FC<Props> = ({ onSent }) => {
       </Typography>
       <img src="/7.webp" className="relative w-44 left-5" />
       <Typography className="text-xl font-bold leading-5 text-center text-secondary">
-        En 3 días hábiles podrás pasar por tu diner a la sucursal de tu
+        En 3 días hábiles podrás pasar por tu dinero a la sucursal de tu
         elección.
       </Typography>
       <Button onClick={onSent}>Enviar</Button>
+      <Typography className="text-sm w-[105%]">
+        <span className="text-lg font-bold text-primary">*</span>
+        El usuario asume el monto de la transacción de $ 3.000 COP
+      </Typography>
     </div>
   );
 };
