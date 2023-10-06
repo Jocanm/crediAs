@@ -10,7 +10,7 @@ export const OutlaySuccess = () => {
       </Typography>
       <img src="/2.webp" className="relative w-32 left-7" />
       <Typography className="text-xl font-bold leading-5 text-center text-secondary">
-        En 3 días hábiles podrás pasar por tu diner a la sucursal de tu
+        En 3 días hábiles podrás pasar por tu dinero a la sucursal de tu
         elección.
       </Typography>
       <Button>Enviar</Button>
