@@ -25,6 +25,15 @@ export const OutlayFirstStepForm: React.FC<Props> = ({ onNextStep }) => {
         para que sea valida.
       </Typography>
       <img src="/08.webp" className="mx-auto w-80" />
+      <div className="flex flex-col items-center">
+        <Typography className="text-xl font-bold leading-3 text-secondary">
+          ¿No tienes cuenta bancaria?
+        </Typography>
+        <Typography>
+          haz click{" "}
+          <span className="underline cursor-pointer text-primary">aquí</span>
+        </Typography>
+      </div>
       <Button className="mx-auto" type="button" onClick={onNextStep}>
         Enviar
       </Button>

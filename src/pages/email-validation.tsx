@@ -34,7 +34,7 @@ const EmailValidationPage = () => {
           </Typography>
         </div>
       </div>
-      <Button className="px-10 w-fit" onClick={onValidateEmail}>
+      <Button className="px-10 mt-2 w-fit" onClick={onValidateEmail}>
         Siguiente
       </Button>
     </div>
