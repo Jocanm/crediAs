@@ -33,7 +33,6 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
         <Input name="customerLastNames" label="Apellidos:" />
         <Select name="documentType" label="Tipo de cédula:">
           <option>Ciudadanía</option>
-          <option>Extranjería</option>
         </Select>
         <Input name="documentNumber" label="Número de cédula:" />
         <Input
