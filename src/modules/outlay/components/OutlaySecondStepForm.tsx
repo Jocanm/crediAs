@@ -8,19 +8,21 @@ export const OutlaySecondStepForm = () => {
       <Select
         name="bankWithAnAccount"
         label="¿Has tenido una cuenta con alguno de los siguientes bancos?"
-      >
-        <option>Banco de Bogotá</option>
-      </Select>
+        options={[{ label: "Banco de Bogotá", value: "Banco de Bogotá" }]}
+      />
       <Select
         name="entityWithPlan"
         label="¿Has tenido un plan con una entidad de telecomunicaciones? Si es así ¿cuál?"
-      >
-        <option>Tigo</option>
-      </Select>
-      <Select name="loanBefore" label="¿Has realizado un préstamo antes?">
-        <option>Si</option>
-        <option>No</option>
-      </Select>
+        options={[{ label: "Tigo", value: "Tigo" }]}
+      />
+      <Select
+        name="loanBefore"
+        label="¿Has realizado un préstamo antes?"
+        options={[
+          { label: "Si", value: "Si" },
+          { label: "No", value: "No" },
+        ]}
+      />
       <Button className="mx-auto">Enviar</Button>
     </div>
   );
