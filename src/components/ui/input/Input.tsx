@@ -65,12 +65,9 @@ export const Input: React.FC<Props> = ({
       {phoneFormat ? (
         <Controller
           name={name}
-          render={({
-            field: { name, onBlur, onChange, ref, value, disabled },
-          }) => (
+          render={({ field: { name, onBlur, onChange, value, disabled } }) => (
             <MaskedInput
               id={name}
-              ref={ref}
               mask={mask}
               name={name}
               value={value}

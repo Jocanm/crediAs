@@ -32,7 +32,10 @@
 
 input, select {
   outline: none;
+  background-color: #f6f6f6;
+}
+
+input {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: #f6f6f6;
 }
