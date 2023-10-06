@@ -12,7 +12,7 @@ export const OutlayResult: React.FC<Props> = ({ onSent }) => {
       <Typography className="text-3xl font-bold text-secondary">
         Desembolso
       </Typography>
-      <img src="/7.webp" className="relative w-44 left-5" />
+      <img src="/09.webp" className="relative w-48 left-12" />
       <Typography className="text-xl font-bold leading-5 text-center text-secondary">
         En 3 días hábiles podrás pasar por tu dinero a la sucursal de tu
         elección.

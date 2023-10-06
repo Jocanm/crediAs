@@ -8,7 +8,7 @@ const CongratsPage = () => {
   const router = useRouter();
 
   const onSentCode = () => {
-    void router.push(RouteName.OUTLAY);
+    void router.replace(RouteName.OUTLAY);
   };
 
   return (

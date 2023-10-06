@@ -8,7 +8,7 @@ const EmailValidationPage = () => {
   const router = useRouter();
 
   const onValidateEmail = () => {
-    void router.push(RouteName.PHONE_VALIDATION);
+    void router.replace(RouteName.PHONE_VALIDATION);
   };
 
   return (
@@ -20,8 +20,7 @@ const EmailValidationPage = () => {
         <Typography size="big" className="text-center">
           Para continuar con la solicitud verificaremos tu correo electrónico
         </Typography>
-        <i className="text-8xl fa-regular fa-envelope text-primary"></i>
-        <img src="/5.webp" className="w-[120px]" />
+        <img src="/03.webp" className="w-36" />
         <div>
           <Typography className="text-center">
             Para solicitar otra vez, haz clic{" "}

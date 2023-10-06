@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 const OutlayPage = () => {
   const router = useRouter();
   const onSendForm = () => {
-    void router.push(RouteName.OUTLAY_RESULT);
+    void router.replace(RouteName.OUTLAY_RESULT);
   };
 
   return (

@@ -22,7 +22,7 @@ export const OutlayFirstStepForm: React.FC<Props> = ({ onNextStep }) => {
         Recuerda que tu cuenta bancaria debe tener mínimo 6 meses de antigüedad
         para que sea valida.
       </Typography>
-      <img src="/1.webp" className="mx-auto w-80" />
+      <img src="/08.webp" className="mx-auto w-80" />
       <Button className="mx-auto" type="button" onClick={onNextStep}>
         Enviar
       </Button>

@@ -21,7 +21,7 @@ const CustomerInfoPage = () => {
       return;
     }
 
-    void router.push(RouteName.EMAIL_VALIDATION);
+    void router.replace(RouteName.EMAIL_VALIDATION);
     toast.success("Datos guardados con éxito");
   };
 

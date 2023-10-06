@@ -11,7 +11,7 @@ export const FacialRecognitionPage = () => {
   const imageInput = useRef<HTMLInputElement>(null);
 
   const onValidate = () => {
-    void router.push(RouteName.CONGRATS);
+    void router.replace(RouteName.CONGRATS);
   };
 
   return (
@@ -27,7 +27,7 @@ export const FacialRecognitionPage = () => {
       <Typography size="medium" className="flex flex-col text-center">
         <span>En la foto se debe ver</span> <span>claramente tu rostro</span>
       </Typography>
-      <img src="/3.webp" className="w-[100px]" />
+      <img src="/05.webp" className="w-32 ml-10" />
       <Button className="px-10 w-fit" onClick={onValidate}>
         Enviar
       </Button>

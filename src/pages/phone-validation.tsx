@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const PhoneValidationPage = () => {
   const router = useRouter();
   const onSubmitForm = () => {
-    void router.push(RouteName.FACIAL_RECOGNITION);
+    void router.replace(RouteName.FACIAL_RECOGNITION);
   };
 
   return (
@@ -22,8 +22,8 @@ const PhoneValidationPage = () => {
       </Typography>
       <PhoneValidationForm onSubmit={onSubmitForm} />
       <img
-        src="/6.webp"
-        className="w-[100px] absolute -right-5 sm:-right-10 top-56 pointer-events-none"
+        src="/04.webp"
+        className="absolute pointer-events-none w-[6.5rem] -right-5 sm:-right-10 top-56"
       />
     </div>
   );

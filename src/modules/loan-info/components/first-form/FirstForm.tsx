@@ -38,7 +38,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   }, [amount]);
 
   const onNextStep = () => {
-    void router.push(RouteName.CUSTOMER_INFO);
+    void router.replace(RouteName.CUSTOMER_INFO);
   };
 
   return (
@@ -139,7 +139,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
           Según tu puntaje, pagarás
         </Typography>
         <div className="relative flex items-end mt-4">
-          <img src="/2.webp" className="w-24 h-40" />
+          <img src="/01.webp" className="w-24 h-40" />
           <div className="flex items-end justify-end flex-1 w-full right-48">
             <div
               className="h-[70px] w-16 rounded-t-lg flex flex-col items-center py-2 justify-between relative
