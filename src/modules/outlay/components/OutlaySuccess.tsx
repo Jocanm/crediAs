@@ -8,7 +8,7 @@ export const OutlaySuccess = () => {
       <Typography className="text-3xl font-bold leading-7 text-center text-secondary">
         Tu solicitud está siendo procesada
       </Typography>
-      <img src="/2.webp" className="relative w-32 left-7" />
+      <img src="/09.webp" className="relative w-48 left-12" />
       <Typography className="text-xl font-bold leading-5 text-center text-secondary">
         En 3 días hábiles podrás pasar por tu dinero a la sucursal de tu
         elección.
