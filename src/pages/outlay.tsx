@@ -10,7 +10,7 @@ const OutlayPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center h-full gap-4">
+    <div className="flex flex-col items-center gap-4">
       <OutlayForm onSubmit={onSendForm} />
     </div>
   );

@@ -6,7 +6,7 @@ interface Props {
 
 export const GlobalLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="h-full overflow-y-auto w-full sm:max-w-[450px] mx-auto px-5 sm:px-10 py-10 sm:rounded-2xl border border-[#c7c7c7] flex flex-col gap-2 relative">
+    <div className="h-full overflow-y-auto w-full sm:max-w-[450px] mx-auto px-5 sm:px-10 sm:rounded-2xl flex flex-col gap-2 relative py-8">
       <CrediasLogo />
       {children}
     </div>

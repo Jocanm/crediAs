@@ -18,7 +18,7 @@ export const OutlayResult: React.FC<Props> = ({ onSent }) => {
         elección.
       </Typography>
       <Button onClick={onSent}>Enviar</Button>
-      <Typography className="text-sm w-[105%]">
+      <Typography className="text-sm w-[105%] text-center">
         <span className="text-lg font-bold text-primary">*</span>
         El usuario asume el monto de la transacción de $ 3.000 COP
       </Typography>
