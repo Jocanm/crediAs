@@ -14,9 +14,11 @@ export const OutlayFirstStepForm: React.FC<Props> = ({ onNextStep }) => {
       <Typography size="medium" className="text-center">
         Escoge donde depositaremos tu dinero.
       </Typography>
-      <Select name="bank" label="Banco:">
-        <option>Banco de Bogotá</option>
-      </Select>
+      <Select
+        name="bank"
+        label="Banco:"
+        options={[{ label: "Banco de Bogotá", value: "Banco de Bogotá" }]}
+      />
       <Input name="account" label="Número de cuenta" />
       <Typography size="medium" className="leading-5 text-center">
         Recuerda que tu cuenta bancaria debe tener mínimo 6 meses de antigüedad

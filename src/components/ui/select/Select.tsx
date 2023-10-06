@@ -1,36 +1,35 @@
 import cn from "@/utils/cn/cn";
-import { ErrorMessage } from "@hookform/error-message";
-import { useFormContext, useFormState } from "react-hook-form";
-import Typography from "../typography/Typography";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { ErrorMessage } from "@hookform/error-message";
+import { useController, useFormState } from "react-hook-form";
+import MySelect from "react-select";
+import { type StateManagerProps } from "react-select/dist/declarations/src/useStateManager";
+import Typography from "../typography/Typography";
 
-interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface Props extends Omit<StateManagerProps, "options"> {
   name: string;
   label?: string;
   labelClassName?: string;
   containerClassName?: string;
   helperTextClassName?: string;
+  options: Array<{ value: string; label: string }>;
 }
 
 export const Select: React.FC<Props> = ({
   name,
   label,
-  children,
+  options,
   className,
   labelClassName,
   containerClassName,
   helperTextClassName,
-  defaultValue = "",
   ...rest
 }) => {
   const [parent] = useAutoAnimate();
-  const { register } = useFormContext();
   const { errors } = useFormState({ name });
+  const { field } = useController({ name });
 
-  const selectClassName = cn(
-    "p-1 rounded border border-[#c7c7c7] min-h-[34px]",
-    className,
-  );
+  const { onBlur, onChange, ref, value, disabled } = field;
 
   return (
     <div
@@ -47,15 +46,24 @@ export const Select: React.FC<Props> = ({
           {label}
         </Typography>
       )}
-      <select
-        {...register(name)}
+      <MySelect
+        ref={ref}
+        placeholder=""
+        name={name}
+        onBlur={onBlur}
+        isDisabled={disabled}
+        options={options}
+        value={options.find((c) => c.value === value)}
+        onChange={(val: any) => onChange(val.value)}
+        classNames={{
+          control: ({ isFocused }) =>
+            cn("!bg-[#f6f6f6]", {
+              [className ?? ""]: true,
+              "!border-[#c7c7c7] !shadow-none": isFocused,
+            }),
+        }}
         {...rest}
-        className={selectClassName}
-        defaultValue={defaultValue}
-      >
-        <option value={defaultValue} disabled></option>
-        {children}
-      </select>
+      />
       <ErrorMessage
         name={name}
         errors={errors}

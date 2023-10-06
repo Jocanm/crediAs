@@ -46,7 +46,7 @@ export const Input: React.FC<Props> = ({
   const { errors } = useFormState({ name });
 
   const inputClassName = cn(
-    "p-1 rounded border border-[#c7c7c7] min-h-[34px]",
+    "p-1 rounded border border-[#c7c7c7] min-h-[38px]",
     className,
   );
 

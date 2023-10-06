@@ -31,9 +31,11 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
       <div className="flex flex-col w-full sm:grid sm:grid-cols-2 gap-x-8 gap-y-5">
         <Input name="customerNames" label="Nombres:" />
         <Input name="customerLastNames" label="Apellidos:" />
-        <Select name="documentType" label="Tipo de cédula:">
-          <option>Ciudadanía</option>
-        </Select>
+        <Select
+          name="documentType"
+          label="Tipo de cédula:"
+          options={[{ label: "Ciudadanía", value: "CC" }]}
+        />
         <Input name="documentNumber" label="Número de cédula:" />
         <Input
           type="date"
