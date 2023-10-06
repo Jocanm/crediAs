@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
-  const stepValue = 10_000;
+  const stepValue = 100_000;
   const minValue = 100_000;
   const maxValue = 1_000_000;
 
