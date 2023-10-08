@@ -4,6 +4,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { Controller, useFormContext, useFormState } from "react-hook-form";
 import MaskedInput from "react-text-mask";
 import Typography from "../typography/Typography";
+import { phoneMask } from "@/schemas/mask";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -13,23 +14,6 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string;
   helperTextClassName?: string;
 }
-
-const mask = [
-  "(",
-  /[1-9]/,
-  /\d/,
-  /\d/,
-  ")",
-  " ",
-  /\d/,
-  /\d/,
-  /\d/,
-  "-",
-  /\d/,
-  /\d/,
-  /\d/,
-  /\d/,
-];
 
 export const Input: React.FC<Props> = ({
   name,
@@ -68,10 +52,10 @@ export const Input: React.FC<Props> = ({
           render={({ field: { name, onBlur, onChange, value, disabled } }) => (
             <MaskedInput
               id={name}
-              mask={mask}
               name={name}
               value={value}
               onBlur={onBlur}
+              mask={phoneMask}
               onChange={onChange}
               disabled={disabled}
               placeholderChar={"\u2000"}

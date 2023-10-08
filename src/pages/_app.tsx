@@ -1,4 +1,3 @@
-import "@/css/global.css";
 import { type NextPage } from "next";
 import type { AppProps } from "next/app";
 import "rc-slider/assets/index.css";
@@ -6,6 +5,7 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import store from "../config/store/index";
+import "@/css/global.css";
 
 export type NextPageWithLayout = NextPage & {
   layout?: (page: React.ReactElement) => React.ReactNode;
