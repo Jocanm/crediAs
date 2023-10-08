@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button/Button";
+import { type HTMLMotionProps } from "framer-motion";
 import React from "react";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = HTMLMotionProps<"button">;
 
 export const PhoneValidationButton: React.FC<Props> = (props) => {
   return (
