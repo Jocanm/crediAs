@@ -27,7 +27,7 @@ export const LoanDetails = () => {
         <Typography>$</Typography>
         <Typography>Intereses</Typography>
         <Typography>$</Typography>
-        <div className="col-span-2 border-t-[3px] my-3" />
+        <div className="col-span-2 border-t-[.1875rem] my-3" />
         <Typography>Total a pagar</Typography>
         <Typography>$</Typography>
       </div>

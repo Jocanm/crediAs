@@ -12,7 +12,7 @@ interface Props extends Omit<StateManagerProps, "options"> {
   labelClassName?: string;
   containerClassName?: string;
   helperTextClassName?: string;
-  options: Array<{ value: string; label: string }>;
+  options: Array<{ value?: string; label: string }>;
 }
 
 export const Select: React.FC<Props> = ({
@@ -30,6 +30,11 @@ export const Select: React.FC<Props> = ({
   const { field } = useController({ name });
 
   const { onBlur, onChange, ref, value, disabled } = field;
+
+  const realOptions = options.map((option) => ({
+    ...option,
+    value: option.value ?? option.label,
+  }));
 
   return (
     <div
@@ -52,8 +57,8 @@ export const Select: React.FC<Props> = ({
         name={name}
         onBlur={onBlur}
         isDisabled={disabled}
-        options={options}
-        value={options.find((c) => c.value === value)}
+        options={realOptions}
+        value={realOptions.find((c) => c.value === value)}
         onChange={(val: any) => onChange(val.value)}
         classNames={{
           control: ({ isFocused }) =>

@@ -17,7 +17,7 @@ export const OutlayFirstStepForm: React.FC<Props> = ({ onNextStep }) => {
       <Select
         name="bank"
         label="Banco:"
-        options={[{ label: "Banco de Bogotá", value: "Banco de Bogotá" }]}
+        options={[{ label: "Banco de Bogotá" }]}
       />
       <Input name="account" label="Número de cuenta" />
       <Typography size="medium" className="leading-5 text-center">

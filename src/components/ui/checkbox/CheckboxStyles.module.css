@@ -10,7 +10,7 @@
   display: block;
   position: relative;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.25rem;
   user-select: none;
 }
 
@@ -21,7 +21,7 @@
   height: 1.3em;
   width: 1.3em;
   transition: all 0.3s;
-  border-radius: 5px;
+  border-radius: .3125rem;
 }
 
 .container input:checked~.checkmark {

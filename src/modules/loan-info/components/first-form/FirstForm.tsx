@@ -27,7 +27,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <Typography className="flex flex-col text-center text-[23px]">
+      <Typography className="flex flex-col text-center text-[1.4375rem]">
         ¿Cuánto dinero te gustaría obtener?{" "}
         <span>{withMonetFormat(amount)}</span>
       </Typography>
@@ -40,10 +40,10 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
             setAmount(val as number);
           }}
           classNames={{
-            track: "bg-[#d23062] h-[10px]",
-            rail: "bg-[#c5c5c3] h-[10px]",
-            tracks: "bg-yellow-500 h-[10px]",
-            handle: "h-[20px] w-[20px] opacity-100 border-none",
+            track: "bg-[#d23062] h-[.625rem]",
+            rail: "bg-[#c5c5c3] h-[.625rem]",
+            tracks: "bg-yellow-500 h-[.625rem]",
+            handle: "h-[1.25rem] w-[1.25rem] opacity-100 border-none",
           }}
         />
       </div>

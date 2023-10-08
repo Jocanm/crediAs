@@ -18,10 +18,10 @@ export const StateCircle = ({
     >
       {value}
       <div
-        className="absolute bottom-[-7px] left-7 bg-black w-4 h-4 flex justify-center items-center rounded-full text-white opacity-50 cursor-pointer"
+        className="absolute bottom-[-.4375rem] left-7 bg-black w-4 h-4 flex justify-center items-center rounded-full text-white opacity-50 cursor-pointer"
         onClick={onClick}
       >
-        <span className="grid place-items-center mb-[5px]">¡</span>
+        <span className="grid place-items-center mb-[0.3125rem]">¡</span>
       </div>
     </div>
   );
