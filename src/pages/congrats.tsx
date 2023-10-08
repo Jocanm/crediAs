@@ -12,7 +12,7 @@ const CongratsPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 mt-2">
+    <div className="flex flex-col items-center gap-4">
       <Typography className="flex flex-col items-center text-3xl font-bold text-primary">
         ¡FELICIDADES!
         <span className="text-2xl font-normal">
@@ -22,12 +22,16 @@ const CongratsPage = () => {
       <Typography className="flex flex-col items-center text-3xl font-bold text-[#2c338b]">
         ¡Firma tu pagaré aquí!
       </Typography>
-      <img src="/10.webp" className="w-32 -mb-7" />
-      <Typography className="leading-4 text-center" size="medium">
+      <img src="/10.webp" className="w-28 sm:w-32 -mb-7" />
+      <Typography className="leading-5 text-center" size="medium">
         Para continuar con el proceso, le enviamos a su numero telefónico un
         código de verificación. Inserte el código aquí:
       </Typography>
-      <PhoneValidationForm onSubmit={onSentCode} showKeyboard={false}>
+      <PhoneValidationForm
+        className="gap-7"
+        onSubmit={onSentCode}
+        showKeyboard={false}
+      >
         <Typography>
           Para visualizar su pagaré haz clic{" "}
           <span className="font-bold underline cursor-pointer text-primary">

@@ -4,7 +4,7 @@ import React from "react";
 
 export const OutlaySecondStepForm = () => {
   return (
-    <div className="flex flex-col w-full [&_.label]:leading-5 [&_.label]:text-center [&_.label]:mb-1 gap-10 mt-10">
+    <div className="flex flex-col w-full [&_.label]:leading-5 [&_.label]:text-center [&_.label]:mb-1 gap-10 mt-5">
       <Select
         name="bankWithAnAccount"
         label="¿Has tenido una cuenta con alguno de los siguientes bancos?"

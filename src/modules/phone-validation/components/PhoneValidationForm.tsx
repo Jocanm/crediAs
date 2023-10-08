@@ -5,8 +5,10 @@ import { usePhoneValidationForm } from "../hooks/usePhoneValidationForm";
 import { type PhoneValidationFormData } from "../schemas/yupSchemas";
 import { PhoneValidationButton } from "./PhoneValidationButton";
 import If from "@/components/ui/if/If";
+import cn from "@/utils/cn/cn";
 
 interface Props {
+  className?: string;
   showKeyboard?: boolean;
   children?: React.ReactNode;
   showSubmitButton?: boolean;
@@ -16,6 +18,7 @@ interface Props {
 export const PhoneValidationForm: React.FC<Props> = ({
   onSubmit,
   children,
+  className,
   showKeyboard = true,
   showSubmitButton = true,
 }) => {
@@ -26,7 +29,7 @@ export const PhoneValidationForm: React.FC<Props> = ({
     <Form
       methods={methods}
       onSubmit={methods.handleSubmit(onSubmit)}
-      className="flex flex-col items-center gap-10 px-10 mt-2"
+      className={cn("flex flex-col items-center gap-10 px-10 mt-2", className)}
     >
       <div className="grid grid-cols-4 gap-4 sm:gap-10 [&_input]:text-center [&_input]:text-xl">
         <Input name="code_1" containerClassName="w-11" type="number" />

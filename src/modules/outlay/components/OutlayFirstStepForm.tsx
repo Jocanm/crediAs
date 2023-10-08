@@ -10,7 +10,7 @@ interface Props {
 
 export const OutlayFirstStepForm: React.FC<Props> = ({ onNextStep }) => {
   return (
-    <div className="flex flex-col mt-10 gap-7">
+    <div className="flex flex-col gap-7">
       <Typography size="medium" className="text-center">
         Escoge donde depositaremos tu dinero.
       </Typography>
