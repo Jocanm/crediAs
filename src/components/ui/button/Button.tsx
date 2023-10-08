@@ -1,8 +1,9 @@
 import cn from "@/utils/cn/cn";
 import React from "react";
 import { Loader } from "../loader/Loader";
+import { type HTMLMotionProps, motion } from "framer-motion";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = HTMLMotionProps<"button"> & {
   isLoading?: boolean;
 };
 
@@ -19,12 +20,12 @@ export const Button: React.FC<Props> = ({
   );
 
   return (
-    <button
+    <motion.button
       {...props}
       className={baseClassName}
       disabled={disabled || isLoading}
     >
       {isLoading ? <Loader /> : children}
-    </button>
+    </motion.button>
   );
 };
