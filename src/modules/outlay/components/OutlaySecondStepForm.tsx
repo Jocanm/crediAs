@@ -1,10 +1,15 @@
 import { Button } from "@/components/ui/button/Button";
 import { Select } from "@/components/ui/select/Select";
-import React from "react";
+import { motion } from "framer-motion";
 
 export const OutlaySecondStepForm = () => {
   return (
-    <div className="flex flex-col w-full [&_.label]:leading-5 [&_.label]:text-center [&_.label]:mb-1 gap-10 mt-5">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7 }}
+      className="flex flex-col w-full [&_.label]:leading-5 [&_.label]:text-center [&_.label]:mb-1 gap-10 mt-5"
+    >
       <Select
         name="bankWithAnAccount"
         label="¿Has tenido una cuenta con alguno de los siguientes bancos?"
@@ -24,6 +29,6 @@ export const OutlaySecondStepForm = () => {
         ]}
       />
       <Button className="mx-auto">Enviar</Button>
-    </div>
+    </motion.div>
   );
 };
