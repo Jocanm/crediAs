@@ -27,7 +27,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
   };
 
   return (
-    <div className="flex items-end justify-end flex-1 w-full right-48">
+    <div className="flex items-end justify-end flex-1 w-full">
       <motion.div
         {...generateAnimation("70px")}
         className={cn(sharedContainerClassName, [
