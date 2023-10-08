@@ -58,7 +58,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
           Según tu puntaje, pagarás
         </Typography>
         <div className="relative flex items-end mt-4 min-h-[11.875rem]">
-          <img src="/01.webp" className="w-24 h-40" />
+          <img src="/01.webp" className="relative w-24 top-2" />
           <CreditBars onShowDetails={onShowDetails} />
         </div>
       </div>
