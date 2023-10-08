@@ -24,7 +24,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     transition: { duration: 0.3, delay: 0.5 },
-  } as const;
+  };
 
   return (
     <div className="flex items-end justify-end flex-1 w-full">
