@@ -6,12 +6,14 @@ import { useForm } from "react-hook-form";
 import { outlayFormSchema, type OutlayFormData } from "../schemas/yupSchemas";
 import { OutlayFirstStepForm } from "./OutlayFirstStepForm";
 import { OutlaySecondStepForm } from "./OutlaySecondStepForm";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props {
   onSubmit: (data: OutlayFormData) => void;
 }
 
 export const OutlayForm: React.FC<Props> = ({ onSubmit }) => {
+  const [parent] = useAutoAnimate();
   const [showSecondForm, setShowSecondForm] = useState(false);
   const methods = useForm({
     mode: "onChange",
@@ -32,11 +34,13 @@ export const OutlayForm: React.FC<Props> = ({ onSubmit }) => {
       <Typography className="text-3xl font-bold text-center text-secondary">
         {showSecondForm ? "Responde las siguientes preguntas." : "Desembolso"}
       </Typography>
-      {showSecondForm ? (
-        <OutlaySecondStepForm />
-      ) : (
-        <OutlayFirstStepForm onNextStep={onNextStep} />
-      )}
+      <div ref={parent}>
+        {showSecondForm ? (
+          <OutlaySecondStepForm />
+        ) : (
+          <OutlayFirstStepForm onNextStep={onNextStep} />
+        )}
+      </div>
     </Form>
   );
 };
