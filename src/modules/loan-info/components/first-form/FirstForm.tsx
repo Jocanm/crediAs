@@ -26,7 +26,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <Typography className="flex flex-col text-center text-[23px]">
         ¿Cuánto dinero te gustaría obtener?{" "}
         <span>{withMonetFormat(amount)}</span>
@@ -65,6 +65,6 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
       <Button className="mx-auto mt-8 w-36" onClick={onNextStep}>
         Siguiente
       </Button>
-    </>
+    </div>
   );
 };
