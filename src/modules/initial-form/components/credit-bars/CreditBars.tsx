@@ -15,15 +15,15 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
   const childClassName = "flex flex-col items-center justify-between h-full";
 
   const generateAnimation = (height: string) => ({
-    initial: { height: 0 },
-    animate: { height },
-    transition: { duration: 0.5 },
+    initial: { height: 0, opacity: 0 },
+    animate: { height, opacity: 1 },
+    transition: { duration: 0.5, delay: 0.2 },
   });
 
   const childAnimation = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    transition: { duration: 0.3, delay: 0.5 },
+    transition: { duration: 0.3, delay: 0.8 },
   };
 
   return (

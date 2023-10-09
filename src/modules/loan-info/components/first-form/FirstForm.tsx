@@ -10,6 +10,7 @@ import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
 import { toast } from "react-toastify";
 import { useValidateAmount } from "@/config/api/globalApi";
+import { motion } from "framer-motion";
 
 export interface InitialInfo {
   monto: number;
@@ -57,7 +58,12 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <motion.div
+      className="flex flex-col gap-2"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
       <Typography className="flex flex-col text-center text-[1.4375rem]">
         ¿Cuánto dinero te gustaría obtener?{" "}
         <span>{withMonetFormat(amount)}</span>
@@ -104,6 +110,6 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
       >
         Siguiente
       </Button>
-    </div>
+    </motion.div>
   );
 };
