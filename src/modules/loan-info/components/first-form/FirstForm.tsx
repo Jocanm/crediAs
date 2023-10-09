@@ -8,6 +8,13 @@ import Slider from "rc-slider";
 import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
+import { toast } from "react-toastify";
+import { useValidateAmount } from "@/config/api/globalApi";
+
+export interface InitialInfo {
+  monto: number;
+  cuotas: number;
+}
 
 interface Props {
   onShowDetails: () => void;
@@ -18,11 +25,35 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   const minValue = 100_000;
   const maxValue = 1_000_000;
 
+  const [validateAmount, { isLoading }] = useValidateAmount();
+
   const router = useRouter();
   const [amount, setAmount] = useState<number>(minValue);
+  const [daySelected, setDaySelected] = useState<15 | 29>();
+  const [feesSelected, setFeesSelected] = useState<number>();
 
-  const onNextStep = () => {
-    void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
+  const onNextStep = async () => {
+    toast.dismiss();
+    if (!daySelected || !feesSelected) {
+      toast.warn("Debe seleccionar la cuota y dia de pago");
+      return;
+    }
+
+    try {
+      await validateAmount({ cuotas: feesSelected, monto: amount });
+
+      const initialInfo: InitialInfo = {
+        monto: amount,
+        cuotas: feesSelected,
+      };
+
+      localStorage.setItem("initialInfo", JSON.stringify(initialInfo));
+
+      void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
+    } catch (error) {
+      toast.error("Ha ocurrido un error al guardar los datos");
+      console.error(error);
+    }
   };
 
   return (
@@ -51,8 +82,12 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
         <Typography size="medium">{withMonetFormat(minValue)}</Typography>
         <Typography size="medium">{withMonetFormat(maxValue)}</Typography>
       </div>
-      <DuesSelector amount={amount} />
-      <PaymentDate />
+      <DuesSelector
+        amount={amount}
+        feesSelected={feesSelected}
+        setFeesSelected={setFeesSelected}
+      />
+      <PaymentDate daySelected={daySelected} setDaySelected={setDaySelected} />
       <div className="mt-5">
         <Typography size="medium" className="text-center">
           Según tu puntaje, pagarás
@@ -62,7 +97,11 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
           <CreditBars onShowDetails={onShowDetails} />
         </div>
       </div>
-      <Button className="mx-auto mt-8 w-36" onClick={onNextStep}>
+      <Button
+        onClick={onNextStep}
+        isLoading={isLoading}
+        className="mx-auto mt-8 w-36"
+      >
         Siguiente
       </Button>
     </div>

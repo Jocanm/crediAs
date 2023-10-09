@@ -13,10 +13,11 @@ import {
 } from "../../schemas/yupSchemas";
 
 interface Props {
+  isLoading: boolean;
   onSubmit: (data: CustomerFormData) => void;
 }
 
-export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
+export const CustomerInfoForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
   const methods = useForm({ resolver: yupResolver(customerFormSchema) });
   const actualDate = new Date();
 
@@ -93,7 +94,7 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
           />
         </motion.div>
       </div>
-      <Button>Siguiente</Button>
+      <Button isLoading={isLoading}>Siguiente</Button>
     </Form>
   );
 };

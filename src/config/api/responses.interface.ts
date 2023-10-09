@@ -1,4 +1,4 @@
-interface CommonResponse {
+export interface CommonResponse {
   error: boolean;
   mensaje: string;
 }
@@ -8,3 +8,5 @@ export interface GetUUIDResponse extends CommonResponse {
     uuid: string;
   };
 }
+
+export interface ValidateAmountResponse extends CommonResponse {}

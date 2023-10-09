@@ -2,10 +2,17 @@ import Typography from "@/components/ui/typography/Typography";
 import cn from "@/utils/cn/cn";
 import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
 import { add } from "date-fns";
-import React, { useState } from "react";
+import React from "react";
 
-export const PaymentDate = () => {
-  const [daySelected, setDaySelected] = useState<15 | 29>();
+interface Props {
+  daySelected: 15 | 29 | undefined;
+  setDaySelected: React.Dispatch<React.SetStateAction<15 | 29 | undefined>>;
+}
+
+export const PaymentDate: React.FC<Props> = ({
+  daySelected,
+  setDaySelected,
+}) => {
   const nextDate = add(new Date(), { months: 1 });
 
   return (

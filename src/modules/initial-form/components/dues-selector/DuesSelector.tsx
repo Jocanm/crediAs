@@ -1,13 +1,17 @@
 import Typography from "@/components/ui/typography/Typography";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 interface Props {
   amount: number;
+  feesSelected?: number;
+  setFeesSelected: (feesSelected: number | undefined) => void;
 }
 
-export const DuesSelector: React.FC<Props> = ({ amount }) => {
-  const [feesSelected, setFeesSelected] = useState<number>();
-
+export const DuesSelector: React.FC<Props> = ({
+  amount,
+  feesSelected,
+  setFeesSelected,
+}) => {
   const availableFees = useMemo(() => {
     let maxFees = 2;
 
