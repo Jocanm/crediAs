@@ -31,7 +31,7 @@ export const PhoneValidationForm: React.FC<Props> = ({
       onSubmit={methods.handleSubmit(onSubmit)}
       className={cn("flex flex-col items-center gap-10 px-10 mt-2", className)}
     >
-      <div className="grid grid-cols-4 gap-4 sm:gap-10 [&_input]:text-center [&_input]:text-xl">
+      <div className="grid grid-cols-4 gap-4 lg:gap-10 [&_input]:text-center [&_input]:text-xl">
         <Input name="code_1" containerClassName="w-11" type="number" />
         <Input
           name="code_2"

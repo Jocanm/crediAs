@@ -22,7 +22,7 @@ const CongratsPage = () => {
       <Typography className="flex flex-col items-center text-3xl font-bold text-[#2c338b]">
         ¡Firma tu pagaré aquí!
       </Typography>
-      <img src="/10.webp" className="w-28 sm:w-32 -mb-7" />
+      <img src="/10.webp" className="w-28 lg:w-32 -mb-7" />
       <Typography className="leading-5 text-center" size="medium">
         Para continuar con el proceso, le enviamos a su numero telefónico un
         código de verificación. Inserte el código aquí:

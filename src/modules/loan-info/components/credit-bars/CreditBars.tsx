@@ -29,9 +29,10 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
   return (
     <div className="flex items-end justify-end flex-1 w-full">
       <motion.div
-        {...generateAnimation("70px")}
+        {...generateAnimation("var(--base-height,70px)")}
         className={cn(sharedContainerClassName, [
           "[background:linear-gradient(233deg,rgba(187,27,39,1)0%,rgba(189,34,76,1)45%,rgba(210,30,91,1)100%);]",
+          ["lg:[--base-height:100px]"],
         ])}
       >
         <motion.div className={childClassName} {...childAnimation}>
@@ -49,9 +50,10 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
         </Typography>
       </motion.div>
       <motion.div
-        {...generateAnimation("110px")}
+        {...generateAnimation("var(--base-height,110px)")}
         className={cn(sharedContainerClassName, [
           "[background:linear-gradient(233deg,rgba(242,157,32,1)0%,rgba(221,120,30,1)45%,rgba(198,71,26,1)100%);]",
+          ["lg:[--base-height:140px]"],
         ])}
       >
         <motion.div className={childClassName} {...childAnimation}>
@@ -66,9 +68,10 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
         </motion.div>
       </motion.div>
       <motion.div
-        {...generateAnimation("150px")}
+        {...generateAnimation("var(--base-height,150px)")}
         className={cn(sharedContainerClassName, [
           "[background:linear-gradient(233deg,rgba(242,232,73,1)0%,rgba(242,190,52,1)45%,rgba(235,101,24,1)100%);]",
+          ["lg:[--base-height:190px]"],
         ])}
       >
         <motion.div className={childClassName} {...childAnimation}>
@@ -83,9 +86,10 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
         </motion.div>
       </motion.div>
       <motion.div
-        {...generateAnimation("190px")}
+        {...generateAnimation("var(--base-height,190px)")}
         className={cn(sharedContainerClassName, [
           "[background:linear-gradient(233deg,rgba(0,151,94,1)0%,rgba(156,176,61,1)45%,rgba(251,188,12,1)100%);]",
+          ["lg:[--base-height:230px]"],
         ])}
       >
         <motion.div className={childClassName} {...childAnimation}>

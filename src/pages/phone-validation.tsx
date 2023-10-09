@@ -23,7 +23,7 @@ const PhoneValidationPage = () => {
       <PhoneValidationForm onSubmit={onSubmitForm} />
       <img
         src="/04.webp"
-        className="absolute pointer-events-none w-[6.5rem] -right-5 sm:-right-10 top-56"
+        className="absolute pointer-events-none w-[6.5rem] -right-5 lg:-right-10 top-56"
       />
     </div>
   );

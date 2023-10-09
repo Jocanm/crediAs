@@ -51,3 +51,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 22px;
+  }
+}

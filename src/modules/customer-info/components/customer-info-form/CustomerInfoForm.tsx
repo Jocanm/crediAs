@@ -36,7 +36,7 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
       onSubmit={methods.handleSubmit(onSubmit)}
       className="flex flex-col items-center gap-10"
     >
-      <div className="flex flex-col w-full sm:grid sm:grid-cols-2 gap-x-8 gap-y-5">
+      <div className="flex flex-col w-full lg:grid lg:grid-cols-2 gap-x-8 gap-y-5">
         <motion.div {...animation}>
           <Input name="customerNames" label="Nombres:" />
         </motion.div>
