@@ -22,7 +22,7 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   const [amount, setAmount] = useState<number>(minValue);
 
   const onNextStep = () => {
-    void router.replace(RouteName.CUSTOMER_INFO);
+    void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
   };
 
   return (

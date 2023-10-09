@@ -9,14 +9,16 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 
 const CustomerInfoPage = () => {
+  const checkId = "accept-terms";
   const router = useRouter();
   const checkboxEl = useRef<HTMLInputElement>(null);
 
-  const onSubmit = (data: CustomerFormData) => {
+  const onSubmit = (_: CustomerFormData) => {
     toast.dismiss();
     const acceptedTerms = checkboxEl.current?.checked;
 
     if (!acceptedTerms) {
+      document.getElementById(checkId)?.scrollIntoView();
       toast.error("Debes aceptar los términos y condiciones");
       return;
     }
@@ -36,10 +38,10 @@ const CustomerInfoPage = () => {
       </Typography>
       <CustomerInfoForm onSubmit={onSubmit} />
       <div className="flex items-center gap-4 mt-4">
-        <Checkbox ref={checkboxEl} id="accept-terms" />
+        <Checkbox ref={checkboxEl} id={checkId} />
         <Typography
           as="label"
-          htmlFor="accept-terms"
+          htmlFor={checkId}
           className="text-xs font-bold cursor-pointer"
         >
           Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo con
