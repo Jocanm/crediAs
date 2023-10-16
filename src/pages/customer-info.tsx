@@ -71,6 +71,7 @@ const CustomerInfoPage = () => {
       <Typography size="big" className="text-center">
         ¡Queremos conocerte!
       </Typography>
+      {new Date().toISOString()}
       <CustomerInfoForm onSubmit={onSubmit} isLoading={isLoading} />
       <div className="flex items-center gap-4 mt-4">
         <Checkbox ref={checkboxEl} id={checkId} />
