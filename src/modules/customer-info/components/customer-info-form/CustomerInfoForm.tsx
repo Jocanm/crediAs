@@ -69,6 +69,7 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
             className="w-full"
             name="expirationDate"
             label="Fecha de expedición:"
+            max={withDateFormat(actualDate)}
           />
         </motion.div>
         <motion.div {...animation}>

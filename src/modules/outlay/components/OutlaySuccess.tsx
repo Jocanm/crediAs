@@ -10,8 +10,7 @@ export const OutlaySuccess = () => {
       </Typography>
       <img src="/09.webp" className="relative w-48 left-12" />
       <Typography className="text-xl font-bold leading-5 text-center text-secondary">
-        En 3 días hábiles podrás pasar por tu dinero a la sucursal de tu
-        elección.
+        Tu desembolso se verá reflejado en tu cuenta en 3 días hábiles.
       </Typography>
       <Button>Enviar</Button>
     </div>

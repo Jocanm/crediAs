@@ -16,8 +16,12 @@ export const FacialRecognitionPage = () => {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <Typography size="big" className="text-center">
+      <Typography size="big" className="font-semibold text-center">
         Reconocimiento Facial
+      </Typography>
+      <Typography size="medium" className="flex flex-col text-center">
+        <span>Puedes cargar una foto de tu cara</span>{" "}
+        <span>haciendo click en el logo.</span>
       </Typography>
       <FacialRecognitionPhone
         onOpenCamera={() => {
@@ -25,7 +29,8 @@ export const FacialRecognitionPage = () => {
         }}
       />
       <Typography size="medium" className="flex flex-col text-center">
-        <span>En la foto se debe ver</span> <span>claramente tu rostro</span>
+        <span>En la foto se debe ver</span>{" "}
+        <span className="-mt-2">claramente tu rostro.</span>
       </Typography>
       <img src="/05.webp" className="w-32 ml-10" />
       <Button className="px-10 w-fit" onClick={onValidate}>
