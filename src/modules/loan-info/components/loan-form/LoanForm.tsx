@@ -21,7 +21,7 @@ interface Props {
   onShowDetails: () => void;
 }
 
-export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
+export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
   const stepValue = 100_000;
   const minValue = 100_000;
   const maxValue = 1_000_000;

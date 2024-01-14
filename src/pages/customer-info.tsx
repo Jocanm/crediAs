@@ -7,7 +7,7 @@ import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { CustomerInfoForm } from "@/modules/customer-info/components/customer-info-form/CustomerInfoForm";
 import { type CustomerFormData } from "@/modules/customer-info/schemas/yupSchemas";
-import { type InitialInfo } from "@/modules/loan-info/components/first-form/FirstForm";
+import { type InitialInfo } from "@/modules/loan-info/components/loan-form/LoanForm";
 import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
 import { useRouter } from "next/router";
 import { useRef } from "react";

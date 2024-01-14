@@ -1,6 +1,6 @@
 import { GlobalLayout } from "@/layouts/GlobalLayout";
-import { FirstForm } from "@/modules/loan-info/components/first-form/FirstForm";
 import { LoanDetails } from "@/modules/loan-info/components/loan-details/LoanDetails";
+import { LoanForm } from "@/modules/loan-info/components/loan-form/LoanForm";
 import { useState } from "react";
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
       {showDetails ? (
         <LoanDetails />
       ) : (
-        <FirstForm onShowDetails={() => setShowDetails(true)} />
+        <LoanForm onShowDetails={() => setShowDetails(true)} />
       )}
       {showDetails && (
         <i
