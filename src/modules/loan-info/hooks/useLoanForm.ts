@@ -20,11 +20,16 @@ export const useLoanForm = ({
 
   const onNextStep = async () => {
     toastService.clearToast();
-    if (!daySelected || !feesSelected) {
+    if (!feesSelected) {
       toastService.generateToast(
         "warning",
-        "Asegúrese de seleccionar la cuota y día de pago",
+        "Debe seleccionar el número de cuotas",
       );
+      return;
+    }
+
+    if (!daySelected) {
+      toastService.generateToast("warning", "Debe seleccionar un día de pago");
       return;
     }
 
