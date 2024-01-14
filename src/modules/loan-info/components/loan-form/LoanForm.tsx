@@ -1,7 +1,7 @@
 import { CreditBars } from "@/modules/loan-info/components/credit-bars/CreditBars";
 import { DuesSelector } from "@/modules/loan-info/components/dues-selector/DuesSelector";
 import { PaymentDate } from "@/modules/loan-info/components/payment-date/PaymentDate";
-import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
+import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
 import React, { useState } from "react";
@@ -42,7 +42,7 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
     >
       <Typography className="flex flex-col text-center text-[1.4375rem]">
         ¿Cuánto dinero te gustaría obtener?{" "}
-        <span>{withMonetFormat(amount)}</span>
+        <span>{withMoneyFormat(amount)}</span>
       </Typography>
       <div className="bg-[#e3e3e3] h-12 flex items-center p-5 pt-4 rounded-lg w-full sh">
         <Slider
@@ -61,8 +61,8 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
         />
       </div>
       <div className="flex justify-between">
-        <Typography size="medium">{withMonetFormat(MIN_VALUE)}</Typography>
-        <Typography size="medium">{withMonetFormat(MAX_VALUE)}</Typography>
+        <Typography size="medium">{withMoneyFormat(MIN_VALUE)}</Typography>
+        <Typography size="medium">{withMoneyFormat(MAX_VALUE)}</Typography>
       </div>
       <DuesSelector
         amount={amount}

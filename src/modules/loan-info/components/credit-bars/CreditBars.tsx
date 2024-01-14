@@ -1,7 +1,7 @@
 import React from "react";
 import { StateCircle } from "./StateCircle";
 import Typography from "@/components/ui/typography/Typography";
-import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
+import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
 import cn from "@/utils/cn/cn";
 
@@ -41,7 +41,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
             onClick={onShowDetails}
           />
           <Typography className="text-xs font-bold text-white underline">
-            {withMonetFormat(130_000)}
+            {withMoneyFormat(130_000)}
           </Typography>
         </motion.div>
         <Typography className="absolute bottom-[-23px] left-5 text-center">
@@ -61,7 +61,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
             onClick={onShowDetails}
           />
           <Typography className="text-xs font-bold text-white underline">
-            {withMonetFormat(120_000)}
+            {withMoneyFormat(120_000)}
           </Typography>
         </motion.div>
       </motion.div>
@@ -78,7 +78,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
             onClick={onShowDetails}
           />
           <Typography className="text-xs font-bold text-white underline">
-            {withMonetFormat(110_000)}
+            {withMoneyFormat(110_000)}
           </Typography>
         </motion.div>
       </motion.div>
@@ -95,7 +95,7 @@ export const CreditBars: React.FC<Props> = ({ onShowDetails }) => {
             onClick={onShowDetails}
           />
           <Typography className="text-xs font-bold text-white underline">
-            {withMonetFormat(100_000)}
+            {withMoneyFormat(100_000)}
           </Typography>
         </motion.div>
         <Typography className="absolute bottom-[-23px] left-5 text-center">

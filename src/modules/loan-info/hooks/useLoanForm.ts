@@ -23,7 +23,7 @@ export const useLoanForm = ({
     if (!daySelected || !feesSelected) {
       toastService.generateToast(
         "warning",
-        "Debe seleccionar la cuota y dia de pago",
+        "Asegúrese de seleccionar la cuota y día de pago",
       );
       return;
     }

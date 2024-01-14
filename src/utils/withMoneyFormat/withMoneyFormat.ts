@@ -1,4 +1,4 @@
-export const withMonetFormat = (value: any) => {
+export const withMoneyFormat = (value: any) => {
   if ([null, undefined].includes(value)) return value;
 
   const number = Number(value);
