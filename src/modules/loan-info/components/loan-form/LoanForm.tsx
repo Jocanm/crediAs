@@ -1,16 +1,13 @@
-import { useValidateAmount } from "@/config/api/globalApi";
-import toastService from "@/config/services/toast/toast.service";
-import { RouteName } from "@/constants/routes";
 import { CreditBars } from "@/modules/initial-form/components/credit-bars/CreditBars";
 import { DuesSelector } from "@/modules/initial-form/components/dues-selector/DuesSelector";
 import { PaymentDate } from "@/modules/initial-form/components/payment-date/PaymentDate";
 import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import Slider from "rc-slider";
 import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
+import { useLoanForm } from "../../hooks/useLoanForm";
 
 export interface InitialInfo {
   monto: number;
@@ -21,47 +18,20 @@ interface Props {
   onShowDetails: () => void;
 }
 
+const STEP_VALUE = 100_000;
+const MIN_VALUE = 100_000;
+const MAX_VALUE = 1_000_000;
+
 export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
-  const stepValue = 100_000;
-  const minValue = 100_000;
-  const maxValue = 1_000_000;
-
-  const [validateAmount, { isLoading }] = useValidateAmount();
-
-  const router = useRouter();
-  const [amount, setAmount] = useState<number>(minValue);
+  const [amount, setAmount] = useState<number>(MIN_VALUE);
   const [daySelected, setDaySelected] = useState<15 | 29>();
   const [feesSelected, setFeesSelected] = useState<number>();
 
-  const onNextStep = async () => {
-    toastService.clearToast();
-    if (!daySelected || !feesSelected) {
-      toastService.generateToast(
-        "warning",
-        "Debe seleccionar la cuota y dia de pago",
-      );
-      return;
-    }
-
-    try {
-      await validateAmount({ cuotas: feesSelected, monto: amount });
-
-      const initialInfo: InitialInfo = {
-        monto: amount,
-        cuotas: feesSelected,
-      };
-
-      localStorage.setItem("initialInfo", JSON.stringify(initialInfo));
-
-      void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
-    } catch (error) {
-      toastService.generateToast(
-        "error",
-        "Ha ocurrido un error al guardar los datos",
-      );
-      console.error(error);
-    }
-  };
+  const { onNextStep, isValidatingAmount } = useLoanForm({
+    amount,
+    daySelected,
+    feesSelected,
+  });
 
   return (
     <motion.div
@@ -76,9 +46,9 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
       </Typography>
       <div className="bg-[#e3e3e3] h-12 flex items-center p-5 pt-4 rounded-lg w-full sh">
         <Slider
-          min={minValue}
-          max={maxValue}
-          step={stepValue}
+          min={MIN_VALUE}
+          max={MAX_VALUE}
+          step={STEP_VALUE}
           onChange={(val) => {
             setAmount(val as number);
           }}
@@ -91,8 +61,8 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
         />
       </div>
       <div className="flex justify-between">
-        <Typography size="medium">{withMonetFormat(minValue)}</Typography>
-        <Typography size="medium">{withMonetFormat(maxValue)}</Typography>
+        <Typography size="medium">{withMonetFormat(MIN_VALUE)}</Typography>
+        <Typography size="medium">{withMonetFormat(MAX_VALUE)}</Typography>
       </div>
       <DuesSelector
         amount={amount}
@@ -111,7 +81,7 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
       </div>
       <Button
         onClick={onNextStep}
-        isLoading={isLoading}
+        isLoading={isValidatingAmount}
         className="mx-auto mt-8 w-36"
       >
         Siguiente

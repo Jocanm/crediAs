@@ -12,8 +12,8 @@ export const GlobalLayout: React.FC<Props> = ({ children }) => {
 
   return (
     <div
-      className="h-full overflow-y-auto w-full sm:max-w-[28.125rem] mx-auto px-5 sm:px-10 sm:rounded-2xl flex flex-col sm:gap-2 relative py-4 sm:py-8"
       ref={parent}
+      className="h-full overflow-y-auto w-full sm:max-w-[28.125rem] mx-auto px-5 sm:px-10 sm:rounded-2xl flex flex-col sm:gap-2 relative py-4 sm:py-8"
     >
       <CrediasLogo />
       {children}
