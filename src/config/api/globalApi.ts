@@ -23,11 +23,13 @@ const globalApi = createApi({
         try {
           const { error, data } = (await queryFulfilled).data;
           if (error) {
+            toastService.clearToast();
             toastService.generateToast("error", error);
             return;
           }
           localStorageService.setUUID(data.uuid);
         } catch (error) {
+          toastService.clearToast();
           toastService.generateToast(
             "error",
             "Ha ocurrido un error al obtener el UUID, por favor recargue la pagina",
@@ -56,7 +58,7 @@ const globalApi = createApi({
 });
 
 export const {
-  useGetUUIDQuery: useGetUUID,
+  useGetUUIDQuery,
   useValidateAmountMutation: useValidateAmount,
   useSendCustomerInfoMutation: useSendCustomerInfo,
 } = globalApi;
