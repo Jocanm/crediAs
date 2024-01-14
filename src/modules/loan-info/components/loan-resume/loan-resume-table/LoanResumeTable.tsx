@@ -12,7 +12,7 @@ interface Props {
 export const LoanResumeTable: React.FC<Props> = ({ data }) => {
   return (
     <div className="flex flex-col font-semibold">
-      <div className="grid grid-cols-[10px,repeat(4,1fr)] mb-4 place-items-center">
+      <div className="grid grid-cols-[25px,repeat(4,1fr)] mb-4 place-items-center">
         <span></span>
         <Typography>Capital</Typography>
         <Typography>Intereses</Typography>
@@ -24,7 +24,7 @@ export const LoanResumeTable: React.FC<Props> = ({ data }) => {
         <div className="flex flex-col [&>div:nth-child(even)]:bg-[#00000008]">
           {data.map((item, i) => (
             <motion.div
-              className="grid grid-cols-[10px,repeat(4,1fr)] py-1 rounded-lg place-items-center hover:!bg-[#0000000d] transition-all duration-100"
+              className="grid grid-cols-[25px,repeat(4,1fr)] py-1 rounded-lg place-items-center hover:!bg-[#0000000d] transition-all duration-100"
               key={nanoid()}
               animate={{ opacity: 1 }}
               initial={{ opacity: 0, transitionDelay: "1" }}
