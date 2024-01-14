@@ -1,6 +1,8 @@
 import { Checkbox } from "@/components/ui/checkbox/Checkbox";
 import Typography from "@/components/ui/typography/Typography";
 import { useSendCustomerInfo } from "@/config/api/globalApi";
+import localStorageService from "@/config/services/localstorage/localstorage.service";
+import toastService from "@/config/services/toast/toast.service";
 import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { CustomerInfoForm } from "@/modules/customer-info/components/customer-info-form/CustomerInfoForm";
@@ -9,7 +11,6 @@ import { type InitialInfo } from "@/modules/loan-info/components/first-form/Firs
 import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
 import { useRouter } from "next/router";
 import { useRef } from "react";
-import { toast } from "react-toastify";
 
 const CustomerInfoPage = () => {
   const checkId = "accept-terms";
@@ -19,20 +20,26 @@ const CustomerInfoPage = () => {
   const [sendCustomerInfo, { isLoading }] = useSendCustomerInfo();
 
   const onSubmit = async (data: CustomerFormData) => {
-    toast.dismiss();
+    toastService.clearToast();
     const acceptedTerms = checkboxEl.current?.checked;
 
     if (!acceptedTerms) {
       document.getElementById(checkId)?.scrollIntoView();
-      toast.error("Debes aceptar los términos y condiciones");
+      toastService.generateToast(
+        "warning",
+        "Debes aceptar los términos y condiciones",
+      );
       return;
     }
 
-    const uuid = localStorage.getItem("uuid");
+    const uuid = localStorageService.getUUID();
     const initialInfo = localStorage.getItem("initialInfo");
 
     if (!uuid || !initialInfo) {
-      toast.error("Ha ocurrido un error al obtener la información");
+      toastService.generateToast(
+        "error",
+        "Ha ocurrido un error al obtener la información",
+      );
       void router.replace(RouteName.HOME);
       return;
     }
@@ -55,9 +62,12 @@ const CustomerInfoPage = () => {
       });
 
       void router.replace(RouteName.EMAIL_VALIDATION);
-      toast.success("Datos guardados con éxito");
+      toastService.generateToast("success", "Datos guardados con éxito");
     } catch (error) {
-      toast.error("Ha ocurrido un error al guardar los datos");
+      toastService.generateToast(
+        "error",
+        "Ha ocurrido un error al guardar los datos",
+      );
       console.error(error);
     }
   };

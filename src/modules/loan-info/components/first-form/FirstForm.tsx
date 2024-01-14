@@ -1,16 +1,16 @@
+import { useValidateAmount } from "@/config/api/globalApi";
+import toastService from "@/config/services/toast/toast.service";
 import { RouteName } from "@/constants/routes";
 import { CreditBars } from "@/modules/initial-form/components/credit-bars/CreditBars";
 import { DuesSelector } from "@/modules/initial-form/components/dues-selector/DuesSelector";
 import { PaymentDate } from "@/modules/initial-form/components/payment-date/PaymentDate";
 import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Slider from "rc-slider";
 import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
-import { toast } from "react-toastify";
-import { useValidateAmount } from "@/config/api/globalApi";
-import { motion } from "framer-motion";
 
 export interface InitialInfo {
   monto: number;
@@ -34,9 +34,12 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
   const [feesSelected, setFeesSelected] = useState<number>();
 
   const onNextStep = async () => {
-    toast.dismiss();
+    toastService.clearToast();
     if (!daySelected || !feesSelected) {
-      toast.warn("Debe seleccionar la cuota y dia de pago");
+      toastService.generateToast(
+        "warning",
+        "Debe seleccionar la cuota y dia de pago",
+      );
       return;
     }
 
@@ -52,7 +55,10 @@ export const FirstForm: React.FC<Props> = ({ onShowDetails }) => {
 
       void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
     } catch (error) {
-      toast.error("Ha ocurrido un error al guardar los datos");
+      toastService.generateToast(
+        "error",
+        "Ha ocurrido un error al guardar los datos",
+      );
       console.error(error);
     }
   };

@@ -1,21 +1,21 @@
+import { BASE_URL } from "@/constants/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import {
-  type ValidateAmountResponse,
-  type GetUUIDResponse,
-  type CommonResponse,
-} from "./responses.interface";
-import { toast } from "react-toastify";
+import localStorageService from "../services/localstorage/localstorage.service";
+import toastService from "../services/toast/toast.service";
 import {
   type SendCustomerInfoBody,
   type ValidateAmountBody,
 } from "./request.interface";
+import {
+  type CommonResponse,
+  type GetUUIDResponse,
+  type ValidateAmountResponse,
+} from "./responses.interface";
 
 const globalApi = createApi({
   reducerPath: "globalApi",
   refetchOnMountOrArgChange: true,
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://credias-back.neero.ai/api",
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getUUID: builder.query<GetUUIDResponse, void>({
       query: () => "/utilidades/UUID",
@@ -23,12 +23,13 @@ const globalApi = createApi({
         try {
           const { error, data } = (await queryFulfilled).data;
           if (error) {
-            toast.error(error);
+            toastService.generateToast("error", error);
             return;
           }
-          localStorage.setItem("uuid", data.uuid);
+          localStorageService.setUUID(data.uuid);
         } catch (error) {
-          toast.error(
+          toastService.generateToast(
+            "error",
             "Ha ocurrido un error al obtener el UUID, por favor recargue la pagina",
           );
         }

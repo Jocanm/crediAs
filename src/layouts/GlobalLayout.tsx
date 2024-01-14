@@ -1,5 +1,6 @@
 import { CrediasLogo } from "@/components/credias-logo/CrediasLogo";
 import { useGetUUID } from "@/config/api/globalApi";
+import localStorageService from "@/config/services/localstorage/localstorage.service";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { skipToken } from "@reduxjs/toolkit/query";
 
@@ -10,7 +11,7 @@ interface Props {
 export const GlobalLayout: React.FC<Props> = ({ children }) => {
   const [parent] = useAutoAnimate();
   useGetUUID(
-    typeof window !== "undefined" && localStorage.getItem("uuid")
+    typeof window !== "undefined" && localStorageService.getUUID()
       ? skipToken
       : undefined,
   );
