@@ -32,7 +32,7 @@ const globalApi = createApi({
           toastService.clearToast();
           toastService.generateToast(
             "error",
-            "Ha ocurrido un error al obtener el UUID, por favor recargue la pagina",
+            "Ha ocurrido un error al obtener los datos, por favor recargue la pagina",
           );
         }
       },

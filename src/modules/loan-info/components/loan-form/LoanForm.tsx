@@ -1,6 +1,6 @@
-import { CreditBars } from "@/modules/initial-form/components/credit-bars/CreditBars";
-import { DuesSelector } from "@/modules/initial-form/components/dues-selector/DuesSelector";
-import { PaymentDate } from "@/modules/initial-form/components/payment-date/PaymentDate";
+import { CreditBars } from "@/modules/loan-info/components/credit-bars/CreditBars";
+import { DuesSelector } from "@/modules/loan-info/components/dues-selector/DuesSelector";
+import { PaymentDate } from "@/modules/loan-info/components/payment-date/PaymentDate";
 import { withMonetFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
