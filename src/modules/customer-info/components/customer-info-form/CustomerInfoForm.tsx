@@ -51,7 +51,11 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
           />
         </motion.div>
         <motion.div {...animation}>
-          <Input name="documentNumber" label="Número de cédula:" />
+          <Input
+            inputMode="numeric"
+            name="documentNumber"
+            label="Número de cédula:"
+          />
         </motion.div>
         <motion.div {...animation}>
           <Input

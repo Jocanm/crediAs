@@ -32,22 +32,30 @@ export const PhoneValidationForm: React.FC<Props> = ({
       className={cn("flex flex-col items-center gap-10 px-10 mt-2", className)}
     >
       <div className="grid grid-cols-4 gap-4 sm:gap-10 [&_input]:text-center [&_input]:text-xl">
-        <Input name="code_1" containerClassName="w-11" type="number" />
+        <Input
+          name="code_1"
+          type="number"
+          inputMode="numeric"
+          containerClassName="w-11"
+        />
         <Input
           name="code_2"
           type="number"
+          inputMode="numeric"
           onKeyDown={onKeyDown(2)}
           containerClassName="w-11"
         />
         <Input
           name="code_3"
           type="number"
+          inputMode="numeric"
           onKeyDown={onKeyDown(3)}
           containerClassName="w-11"
         />
         <Input
           name="code_4"
           type="number"
+          inputMode="numeric"
           onKeyDown={onKeyDown(4)}
           containerClassName="w-11"
         />
