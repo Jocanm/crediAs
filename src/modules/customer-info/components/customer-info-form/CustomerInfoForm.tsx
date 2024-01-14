@@ -80,6 +80,7 @@ export const CustomerInfoForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
           <Input
             phoneFormat
             name="phoneNumber"
+            inputMode="numeric"
             label="Teléfono celular:"
             containerClassName="col-span-2"
           />
