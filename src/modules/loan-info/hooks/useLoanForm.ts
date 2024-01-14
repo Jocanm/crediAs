@@ -38,7 +38,7 @@ export const useLoanForm = ({
 
       localStorage.setItem("initialInfo", JSON.stringify(initialInfo));
 
-      void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
+      void router.replace(RouteName.LOAN_RESUME);
     } catch (error) {
       toastService.generateToast(
         "error",

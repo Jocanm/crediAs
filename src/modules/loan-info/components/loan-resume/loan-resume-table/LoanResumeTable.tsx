@@ -8,9 +8,10 @@ export const LoanResumeTable = () => {
 
   return (
     <div className="flex flex-col font-semibold">
-      <div className="grid grid-cols-3 mb-4 place-items-center">
+      <div className="grid grid-cols-4 mb-4 place-items-center">
         <Typography>Capital</Typography>
         <Typography>Intereses</Typography>
+        <Typography>Otros</Typography>
         <Typography>Saldo</Typography>
       </div>
       {/* <div className="flex flex-col [&>div:nth-child(even)]:bg[#00000008]"> */}
@@ -18,7 +19,7 @@ export const LoanResumeTable = () => {
         <div className="flex flex-col [&>div:nth-child(even)]:bg-[#00000008]">
           {items.map((_, i) => (
             <motion.div
-              className="grid grid-cols-3 py-1 rounded-lg place-items-center hover:!bg-[#0000000d] transition-all duration-100"
+              className="grid grid-cols-4 py-1 rounded-lg place-items-center hover:!bg-[#0000000d] transition-all duration-100"
               key={i}
               animate={{ opacity: 1 }}
               initial={{ opacity: 0, transitionDelay: "1" }}
@@ -26,6 +27,7 @@ export const LoanResumeTable = () => {
             >
               <Typography color="light">{withMoneyFormat(70_000)}</Typography>
               <Typography color="light">{withMoneyFormat(27_800)}</Typography>
+              <Typography color="light">{withMoneyFormat(13_000)}</Typography>
               <Typography color="light">
                 {withMoneyFormat(9_800_000)}
               </Typography>

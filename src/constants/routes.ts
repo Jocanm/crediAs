@@ -1,5 +1,6 @@
 export enum RouteName {
   HOME = "/",
+  LOAN_RESUME = "/loan-resume",
   CUSTOMER_INFO = "/customer-info",
   EMAIL_VALIDATION = "/email-validation",
   PHONE_VALIDATION = "/phone-validation",
