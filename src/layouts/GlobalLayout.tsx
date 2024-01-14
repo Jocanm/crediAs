@@ -1,5 +1,6 @@
 import { CrediasLogo } from "@/components/credias-logo/CrediasLogo";
 import { useGetUUID } from "@/hooks/useGetUUID";
+import { useScrollToTop } from "@/hooks/utils/useScrollToTop";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 
 export const GlobalLayout: React.FC<Props> = ({ children }) => {
   useGetUUID();
+  useScrollToTop();
   const [parent] = useAutoAnimate();
 
   return (
