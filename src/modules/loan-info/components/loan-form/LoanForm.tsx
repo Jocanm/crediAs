@@ -1,10 +1,11 @@
+import localstorageService from "@/config/services/localstorage/localstorage.service";
 import { CreditBars } from "@/modules/loan-info/components/credit-bars/CreditBars";
 import { DuesSelector } from "@/modules/loan-info/components/dues-selector/DuesSelector";
 import { PaymentDate } from "@/modules/loan-info/components/payment-date/PaymentDate";
 import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
 import { useLoanForm } from "../../hooks/useLoanForm";
@@ -12,6 +13,7 @@ import { useLoanForm } from "../../hooks/useLoanForm";
 export interface InitialInfo {
   monto: number;
   cuotas: number;
+  diaDelMes: number;
 }
 
 interface Props {
@@ -33,6 +35,17 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
     feesSelected,
   });
 
+  useEffect(() => {
+    const initialInfo = localstorageService.getInitialInfo();
+    if (initialInfo) {
+      console.log(initialInfo);
+      setAmount(initialInfo.monto);
+      setFeesSelected(initialInfo.cuotas);
+      setDaySelected(initialInfo.diaDelMes as 15 | 29);
+      localstorageService.removeInitialInfo();
+    }
+  }, []);
+
   return (
     <motion.div
       className="flex flex-col gap-2"
@@ -46,6 +59,7 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
       </Typography>
       <div className="bg-[#e3e3e3] h-12 flex items-center p-5 pt-4 rounded-lg w-full sh">
         <Slider
+          value={amount}
           min={MIN_VALUE}
           max={MAX_VALUE}
           step={STEP_VALUE}

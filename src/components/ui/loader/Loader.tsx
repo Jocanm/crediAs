@@ -1,13 +1,25 @@
+import cn from "@/utils/cn/cn";
 import React from "react";
 
-export const Loader = () => {
+interface Props extends React.SVGProps<SVGSVGElement> {
+  containerProps?: React.HTMLAttributes<HTMLDivElement>;
+}
+
+export const Loader: React.FC<Props> = ({ containerProps, ...props }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div
+      {...containerProps}
+      className={cn(
+        "flex items-center justify-center",
+        containerProps?.className,
+      )}
+    >
       <svg
-        className="w-5 h-5 text-white animate-spin"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
+        {...props}
+        className={cn("w-5 h-5 text-white animate-spin", props.className)}
       >
         <circle
           className="opacity-25"

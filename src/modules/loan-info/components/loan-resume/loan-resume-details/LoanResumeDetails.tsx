@@ -2,12 +2,22 @@ import Typography from "@/components/ui/typography/Typography";
 import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import React, { type PropsWithChildren } from "react";
 
-export const LoanResumeDetails = () => {
+interface LoanResumeDetailsProps {
+  amount: number;
+  term: number;
+  fee: number;
+}
+
+export const LoanResumeDetails: React.FC<LoanResumeDetailsProps> = ({
+  amount,
+  fee,
+  term,
+}) => {
   return (
     <LoanResumeDetailsContainer>
-      <LoanResumeDetail title="Monto" value={withMoneyFormat(200000)} />
-      <LoanResumeDetail title="Cuota" value={withMoneyFormat(100_000)} />
-      <LoanResumeDetail title="Plazo" value="12" />
+      <LoanResumeDetail title="Monto" value={withMoneyFormat(amount)} />
+      <LoanResumeDetail title="Cuota" value={withMoneyFormat(fee)} />
+      <LoanResumeDetail title="Plazo" value={term} />
     </LoanResumeDetailsContainer>
   );
 };

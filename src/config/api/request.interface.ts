@@ -16,3 +16,8 @@ export interface SendCustomerInfoBody {
   celular: string;
   email: string;
 }
+
+export interface GetLoanResumeBody {
+  plazo: number;
+  capital: number;
+}

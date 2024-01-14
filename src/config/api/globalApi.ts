@@ -3,11 +3,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import localStorageService from "../services/localstorage/localstorage.service";
 import toastService from "../services/toast/toast.service";
 import {
+  type GetLoanResumeBody,
   type SendCustomerInfoBody,
   type ValidateAmountBody,
 } from "./request.interface";
 import {
+  type GetLoanResumeResponse,
   type CommonResponse,
+  type GetLoanResumeApiResponse,
   type GetUUIDResponse,
   type ValidateAmountResponse,
 } from "./responses.interface";
@@ -54,11 +57,26 @@ const globalApi = createApi({
         url: "/verificaciones/valores_solicitud",
       }),
     }),
+    getLoanResume: builder.query<GetLoanResumeResponse, GetLoanResumeBody>({
+      query: (body) => ({
+        body,
+        method: "POST",
+        url: "/credito/tabla_amortizacion",
+      }),
+      keepUnusedDataFor: 0,
+      transformResponse: (response: GetLoanResumeApiResponse[], _, body) => {
+        return {
+          info: body,
+          data: response,
+        };
+      },
+    }),
   }),
 });
 
 export const {
   useGetUUIDQuery,
+  useLazyGetLoanResumeQuery,
   useValidateAmountMutation: useValidateAmount,
   useSendCustomerInfoMutation: useSendCustomerInfo,
 } = globalApi;

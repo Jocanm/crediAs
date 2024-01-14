@@ -34,11 +34,12 @@ export const useLoanForm = ({
       const initialInfo: InitialInfo = {
         monto: amount,
         cuotas: feesSelected,
+        diaDelMes: daySelected,
       };
 
       localStorage.setItem("initialInfo", JSON.stringify(initialInfo));
 
-      void router.replace(RouteName.LOAN_RESUME);
+      void router.push(RouteName.LOAN_RESUME);
     } catch (error) {
       toastService.generateToast(
         "error",
