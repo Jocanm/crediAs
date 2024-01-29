@@ -12,4 +12,5 @@ export enum RouteName {
 
 export enum DocumentName {
   PAGARE = "/documents/pagare.pdf",
+  TERMS_AND_CONDITIONS = "/documents/terminos-condiciones.pdf",
 }

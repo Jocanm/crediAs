@@ -12,7 +12,6 @@ const CongratsPage = () => {
 
   const onOpenPagare = () => {
     const url = new URL(DocumentName.PAGARE, window.location.origin);
-    console.log(url);
     window.open(
       url,
       "_blank",

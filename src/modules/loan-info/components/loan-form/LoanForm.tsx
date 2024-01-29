@@ -5,10 +5,12 @@ import { PaymentDate } from "@/modules/loan-info/components/payment-date/Payment
 import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../../../../components/ui/button/Button";
 import Typography from "../../../../components/ui/typography/Typography";
 import { useLoanForm } from "../../hooks/useLoanForm";
+import { DocumentName } from "@/constants/routes";
+import { Checkbox } from "@/components/ui/checkbox/Checkbox";
 
 export interface InitialInfo {
   monto: number;
@@ -28,9 +30,11 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
   const [amount, setAmount] = useState<number>(MIN_VALUE);
   const [daySelected, setDaySelected] = useState<15 | 29>();
   const [feesSelected, setFeesSelected] = useState<number>();
+  const checkboxEl = useRef<HTMLInputElement>(null);
 
   const { onNextStep, onGetValidatedFields, isValidatingAmount } = useLoanForm({
     amount,
+    checkboxEl,
     daySelected,
     feesSelected,
   });
@@ -41,6 +45,14 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
       localstorageService.setInitialInfo(fields);
       onShowDetails();
     }
+  };
+
+  const onOpenTermsAndConditions = () => {
+    const url = new URL(
+      DocumentName.TERMS_AND_CONDITIONS,
+      window.location.origin,
+    );
+    window.open(url, "_blank");
   };
 
   useEffect(() => {
@@ -100,10 +112,29 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
           <CreditBars onShowDetails={onVisualizeDetails} />
         </div>
       </div>
+      <div className="flex items-center mt-8 mb-2">
+        <Checkbox ref={checkboxEl} id="accept-terms-id" />
+        <div className="pl-4 text-xs font-bold">
+          <Typography
+            as="label"
+            htmlFor="accept-terms-id"
+            className="cursor-pointer"
+          >
+            Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo
+            con las clausulas propuestas,
+          </Typography>
+          <span
+            onClick={onOpenTermsAndConditions}
+            className="font-bold underline cursor-pointer text-primary"
+          >
+            ver aquí
+          </span>
+        </div>
+      </div>
       <Button
         onClick={onNextStep}
         isLoading={isValidatingAmount}
-        className="mx-auto mt-8 w-36"
+        className="mx-auto w-36"
       >
         Siguiente
       </Button>

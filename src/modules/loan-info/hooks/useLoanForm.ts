@@ -9,10 +9,12 @@ interface UseLoanFormProps {
   amount: number;
   daySelected: number | undefined;
   feesSelected: number | undefined;
+  checkboxEl: React.MutableRefObject<HTMLInputElement | null>;
 }
 
 export const useLoanForm = ({
   amount,
+  checkboxEl,
   daySelected,
   feesSelected,
 }: UseLoanFormProps) => {
@@ -48,6 +50,17 @@ export const useLoanForm = ({
   const onNextStep = async () => {
     const { isValid, fields } = onGetValidatedFields();
     if (!isValid) return;
+
+    const acceptedTerms = checkboxEl.current?.checked;
+
+    if (!acceptedTerms) {
+      checkboxEl.current?.scrollIntoView();
+      toastService.generateToast(
+        "warning",
+        "Debes aceptar los términos y condiciones",
+      );
+      return;
+    }
 
     const { cuotas, diaDelMes, monto } = fields;
 

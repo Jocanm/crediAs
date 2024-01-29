@@ -1,76 +1,10 @@
-import { Checkbox } from "@/components/ui/checkbox/Checkbox";
 import Typography from "@/components/ui/typography/Typography";
-import { useSendCustomerInfo } from "@/config/api/globalApi";
-import localStorageService from "@/config/services/localstorage/localstorage.service";
-import toastService from "@/config/services/toast/toast.service";
-import { RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { CustomerInfoForm } from "@/modules/customer-info/components/customer-info-form/CustomerInfoForm";
-import { type CustomerFormData } from "@/modules/customer-info/schemas/yupSchemas";
-import { type InitialInfo } from "@/modules/loan-info/components/loan-form/LoanForm";
-import { withDateFormat } from "@/utils/withDateFormat/withDateFormat";
-import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useCustomerInfoForm } from "@/modules/customer-info/hooks/useCustomerInfoForm";
 
 const CustomerInfoPage = () => {
-  const checkId = "accept-terms";
-  const router = useRouter();
-  const checkboxEl = useRef<HTMLInputElement>(null);
-
-  const [sendCustomerInfo, { isLoading }] = useSendCustomerInfo();
-
-  const onSubmit = async (data: CustomerFormData) => {
-    toastService.clearToast();
-    const acceptedTerms = checkboxEl.current?.checked;
-
-    if (!acceptedTerms) {
-      document.getElementById(checkId)?.scrollIntoView();
-      toastService.generateToast(
-        "warning",
-        "Debes aceptar los términos y condiciones",
-      );
-      return;
-    }
-
-    const uuid = localStorageService.getUUID();
-    const initialInfo = localStorage.getItem("initialInfo");
-
-    if (!uuid || !initialInfo) {
-      toastService.generateToast(
-        "error",
-        "Ha ocurrido un error al obtener la información",
-      );
-      void router.replace(RouteName.HOME);
-      return;
-    }
-
-    const { cuotas, monto } = JSON.parse(initialInfo) as InitialInfo;
-
-    try {
-      await sendCustomerInfo({
-        cuotas,
-        monto,
-        uuid,
-        nombres: data.customerNames,
-        apellidos: data.customerLastNames,
-        celular: data.phoneNumber,
-        doc: String(data.documentNumber),
-        tipo_doc: data.documentType,
-        email: data.customerEmail,
-        fecha_expedicion: withDateFormat(data.expirationDate),
-        fecha_nacimiento: withDateFormat(data.birthDate),
-      });
-
-      void router.replace(RouteName.EMAIL_VALIDATION);
-      toastService.generateToast("success", "Datos guardados con éxito");
-    } catch (error) {
-      toastService.generateToast(
-        "error",
-        "Ha ocurrido un error al guardar los datos",
-      );
-      console.error(error);
-    }
-  };
+  const { isLoading, onSubmit } = useCustomerInfoForm();
 
   return (
     <div className="relative flex flex-col gap-5">
@@ -82,17 +16,6 @@ const CustomerInfoPage = () => {
         ¡Queremos conocerte!
       </Typography>
       <CustomerInfoForm onSubmit={onSubmit} isLoading={isLoading} />
-      <div className="flex items-center mt-4">
-        <Checkbox ref={checkboxEl} id={checkId} />
-        <Typography
-          as="label"
-          htmlFor={checkId}
-          className="pl-4 text-xs font-bold cursor-pointer"
-        >
-          Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo con
-          las clausulas propuestas
-        </Typography>
-      </div>
     </div>
   );
 };
