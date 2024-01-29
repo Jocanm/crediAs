@@ -1,4 +1,5 @@
 import { useValidateAmount } from "@/config/api/globalApi";
+import localstorageService from "@/config/services/localstorage/localstorage.service";
 import toastService from "@/config/services/toast/toast.service";
 import { RouteName } from "@/constants/routes";
 import { useRouter } from "next/router";
@@ -18,33 +19,50 @@ export const useLoanForm = ({
   const router = useRouter();
   const [validateAmount, { isLoading }] = useValidateAmount();
 
-  const onNextStep = async () => {
+  const onGetValidatedFields = () => {
     toastService.clearToast();
+
     if (!feesSelected) {
       toastService.generateToast(
         "warning",
         "Debe seleccionar el número de cuotas",
       );
-      return;
+      return { isValid: false } as const;
     }
 
     if (!daySelected) {
       toastService.generateToast("warning", "Debe seleccionar un día de pago");
-      return;
+      return { isValid: false } as const;
     }
 
-    try {
-      await validateAmount({ cuotas: feesSelected, monto: amount });
-
-      const initialInfo: InitialInfo = {
+    return {
+      isValid: true,
+      fields: {
         monto: amount,
         cuotas: feesSelected,
         diaDelMes: daySelected,
+      },
+    } as const;
+  };
+
+  const onNextStep = async () => {
+    const { isValid, fields } = onGetValidatedFields();
+    if (!isValid) return;
+
+    const { cuotas, diaDelMes, monto } = fields;
+
+    try {
+      await validateAmount({ cuotas, monto });
+
+      const initialInfo: InitialInfo = {
+        monto,
+        cuotas,
+        diaDelMes,
       };
 
-      localStorage.setItem("initialInfo", JSON.stringify(initialInfo));
+      localstorageService.setInitialInfo(initialInfo);
 
-      void router.push(RouteName.LOAN_RESUME);
+      void router.replace(RouteName.CUSTOMER_INFO + "#logo-container");
     } catch (error) {
       toastService.generateToast(
         "error",
@@ -56,6 +74,7 @@ export const useLoanForm = ({
 
   return {
     onNextStep,
+    onGetValidatedFields,
     isValidatingAmount: isLoading,
   };
 };

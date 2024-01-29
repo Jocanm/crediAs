@@ -29,16 +29,23 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
   const [daySelected, setDaySelected] = useState<15 | 29>();
   const [feesSelected, setFeesSelected] = useState<number>();
 
-  const { onNextStep, isValidatingAmount } = useLoanForm({
+  const { onNextStep, onGetValidatedFields, isValidatingAmount } = useLoanForm({
     amount,
     daySelected,
     feesSelected,
   });
 
+  const onVisualizeDetails = () => {
+    const { isValid, fields } = onGetValidatedFields();
+    if (isValid) {
+      localstorageService.setInitialInfo(fields);
+      onShowDetails();
+    }
+  };
+
   useEffect(() => {
     const initialInfo = localstorageService.getInitialInfo();
     if (initialInfo) {
-      console.log(initialInfo);
       setAmount(initialInfo.monto);
       setFeesSelected(initialInfo.cuotas);
       setDaySelected(initialInfo.diaDelMes as 15 | 29);
@@ -90,7 +97,7 @@ export const LoanForm: React.FC<Props> = ({ onShowDetails }) => {
         </Typography>
         <div className="relative flex items-end mt-4 min-h-[11.875rem]">
           <img src="/01.webp" className="relative w-24 top-2" />
-          <CreditBars onShowDetails={onShowDetails} />
+          <CreditBars onShowDetails={onVisualizeDetails} />
         </div>
       </div>
       <Button
