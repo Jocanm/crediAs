@@ -82,12 +82,12 @@ const CustomerInfoPage = () => {
         ¡Queremos conocerte!
       </Typography>
       <CustomerInfoForm onSubmit={onSubmit} isLoading={isLoading} />
-      <div className="flex items-center gap-4 mt-4">
+      <div className="flex items-center mt-4">
         <Checkbox ref={checkboxEl} id={checkId} />
         <Typography
           as="label"
           htmlFor={checkId}
-          className="text-xs font-bold cursor-pointer"
+          className="pl-4 text-xs font-bold cursor-pointer"
         >
           Acepto el tratamiento de datos y el pacto sobre firmas de acuerdo con
           las clausulas propuestas

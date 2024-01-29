@@ -1,6 +1,7 @@
 import Typography from "@/components/ui/typography/Typography";
 import { withMoneyFormat } from "@/utils/withMoneyFormat/withMoneyFormat";
 import { useGetLoanResume } from "../../hooks/useGetLoanResume";
+import { useScrollToTop } from "@/hooks/utils/useScrollToTop";
 
 export const LoanDetails = () => {
   const { data: res, isLoading } = useGetLoanResume();
@@ -16,6 +17,8 @@ export const LoanDetails = () => {
     }
     return withMoneyFormat(value);
   };
+
+  useScrollToTop();
 
   return (
     <div className="flex flex-col gap-10 mt-5">

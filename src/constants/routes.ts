@@ -9,3 +9,7 @@ export enum RouteName {
   OUTLAY = "/outlay",
   OUTLAY_RESULT = "/outlay-result",
 }
+
+export enum DocumentName {
+  PAGARE = "/documents/pagare.pdf",
+}

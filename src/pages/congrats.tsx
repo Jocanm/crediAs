@@ -1,14 +1,23 @@
 import Typography from "@/components/ui/typography/Typography";
-import { RouteName } from "@/constants/routes";
+import { DocumentName, RouteName } from "@/constants/routes";
 import { GlobalLayout } from "@/layouts/GlobalLayout";
 import { PhoneValidationForm } from "@/modules/phone-validation/components/PhoneValidationForm";
 import { useRouter } from "next/router";
 
 const CongratsPage = () => {
-  const router = useRouter();
-
   const onSentCode = () => {
+    const router = useRouter();
     void router.replace(RouteName.OUTLAY);
+  };
+
+  const onOpenPagare = () => {
+    const url = new URL(DocumentName.PAGARE, window.location.origin);
+    console.log(url);
+    window.open(
+      url,
+      "_blank",
+      "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400",
+    );
   };
 
   return (
@@ -34,7 +43,10 @@ const CongratsPage = () => {
       >
         <Typography>
           Para visualizar su pagaré haz clic{" "}
-          <span className="font-bold underline cursor-pointer text-primary">
+          <span
+            onClick={onOpenPagare}
+            className="font-bold underline cursor-pointer text-primary"
+          >
             aquí
           </span>
         </Typography>
