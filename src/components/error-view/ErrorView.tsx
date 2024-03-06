@@ -12,7 +12,10 @@ export const ErrorView: React.FC<Props> = ({ subtitle, title }) => {
       <Typography className="text-3xl font-bold text-center text-secondary">
         {title}
       </Typography>
-      <Typography className="text-center text-primary" size="big">
+      <Typography
+        className="text-center whitespace-pre-line text-primary"
+        size="big"
+      >
         {subtitle}
       </Typography>
     </div>
