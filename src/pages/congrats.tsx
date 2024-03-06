@@ -5,8 +5,9 @@ import { PhoneValidationForm } from "@/modules/phone-validation/components/Phone
 import { useRouter } from "next/router";
 
 const CongratsPage = () => {
+  const router = useRouter();
+
   const onSentCode = () => {
-    const router = useRouter();
     void router.replace(RouteName.OUTLAY);
   };
 
